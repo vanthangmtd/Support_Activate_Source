@@ -176,7 +176,7 @@ namespace SupportActivate.FormWindows
             StreamReader reader;
             Uri address;
             string results = "";
-            address = new Uri("https://localhost:44359/api-up-syn-pidkey");
+            address = new Uri("https://getcid.info/api-up-syn-pidkey");
             ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072 | SecurityProtocolType.Ssl3 | (SecurityProtocolType)768 | SecurityProtocolType.Tls;
             ServicePointManager.DefaultConnectionLimit = 50;
             ServicePointManager.ServerCertificateValidationCallback = AcceptAllCertifications;

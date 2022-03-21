@@ -24,6 +24,5 @@ D:\Source_code\Support_Activate_Source\SupportActivate\obj\Release\SupportActiva
 D:\Source_code\Support_Activate_Source\SupportActivate\bin\Release\Support Activate v.3.6.1 x64.exe.config
 D:\Source_code\Support_Activate_Source\SupportActivate\bin\Release\Support Activate v.3.6.1 x64.exe
 D:\Source_code\Support_Activate_Source\SupportActivate\bin\Release\Support Activate v.3.6.1 x64.pdb
-D:\Source_code\Support_Activate_Source\SupportActivate\obj\Release\SupportActivate.csproj.AssemblyReference.cache
 D:\Source_code\Support_Activate_Source\SupportActivate\obj\Release\Support Activate v.3.6.1 x64.exe
 D:\Source_code\Support_Activate_Source\SupportActivate\obj\Release\Support Activate v.3.6.1 x64.pdb
