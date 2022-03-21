@@ -55,9 +55,6 @@ D:\SupportActivate\SupportActivate x64\SupportActivate\obj\Debug\SupportActivate
 D:\SupportActivate\SupportActivate x64\SupportActivate\obj\Debug\Support Activate v.3.6 x64.exe
 D:\SupportActivate\SupportActivate x64\SupportActivate\obj\Debug\Support Activate v.3.6 x64.pdb
 D:\SupportActivate\SupportActivate x64\SupportActivate\obj\Debug\SupportActivate.csproj.AssemblyReference.cache
-D:\Source_code\Support_Activate_Source\SupportActivate\bin\Debug\Support Activate v.3.6 x64.exe.config
-D:\Source_code\Support_Activate_Source\SupportActivate\bin\Debug\Support Activate v.3.6 x64.exe
-D:\Source_code\Support_Activate_Source\SupportActivate\bin\Debug\Support Activate v.3.6 x64.pdb
 D:\Source_code\Support_Activate_Source\SupportActivate\bin\Debug\EntityFramework.dll
 D:\Source_code\Support_Activate_Source\SupportActivate\bin\Debug\EntityFramework.SqlServer.dll
 D:\Source_code\Support_Activate_Source\SupportActivate\bin\Debug\log4net.dll
@@ -81,5 +78,8 @@ D:\Source_code\Support_Activate_Source\SupportActivate\obj\Debug\SupportActivate
 D:\Source_code\Support_Activate_Source\SupportActivate\obj\Debug\SupportActivate.csproj.GenerateResource.cache
 D:\Source_code\Support_Activate_Source\SupportActivate\obj\Debug\SupportActivate.csproj.CoreCompileInputs.cache
 D:\Source_code\Support_Activate_Source\SupportActivate\obj\Debug\SupportActivate.csproj.CopyComplete
-D:\Source_code\Support_Activate_Source\SupportActivate\obj\Debug\Support Activate v.3.6 x64.exe
-D:\Source_code\Support_Activate_Source\SupportActivate\obj\Debug\Support Activate v.3.6 x64.pdb
+D:\Source_code\Support_Activate_Source\SupportActivate\bin\Debug\Support Activate v.3.6.1 x64.exe.config
+D:\Source_code\Support_Activate_Source\SupportActivate\bin\Debug\Support Activate v.3.6.1 x64.exe
+D:\Source_code\Support_Activate_Source\SupportActivate\bin\Debug\Support Activate v.3.6.1 x64.pdb
+D:\Source_code\Support_Activate_Source\SupportActivate\obj\Debug\Support Activate v.3.6.1 x64.exe
+D:\Source_code\Support_Activate_Source\SupportActivate\obj\Debug\Support Activate v.3.6.1 x64.pdb

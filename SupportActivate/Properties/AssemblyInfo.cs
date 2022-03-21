@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Support Activate v.3.6 x64")]
-[assembly: AssemblyDescription("Support Activate v.3.6 x64")]
+[assembly: AssemblyTitle("Support Activate v.3.6.1 x64")]
+[assembly: AssemblyDescription("Support Activate v.3.6.1 x64")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Tran Van Thang")]
-[assembly: AssemblyProduct("Support Activate v.3.6 x64")]
+[assembly: AssemblyProduct("Support Activate v.3.6.1 x64")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "config/Log4Net.Config.xml", Watch = true)]
@@ -33,5 +33,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.6.0.0")]
-[assembly: AssemblyFileVersion("3.6.0.0")]
+[assembly: AssemblyVersion("3.6.1.0")]
+[assembly: AssemblyFileVersion("3.6.1.0")]

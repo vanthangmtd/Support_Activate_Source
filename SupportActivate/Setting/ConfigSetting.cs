@@ -124,7 +124,7 @@ namespace SupportActivate.Setting
                 var breakVersion = valueUpdate.IndexOf("version:");
                 var valueUpdateNew = valueUpdate.Substring(breakVersion + 8);
                 readerUpdate.Close();
-                double version = formMain.version;
+                string version = formMain.version;
                 if (valueUpdateNew != version.ToString())
                 {
                     formMain.lb_NotiUpdate.Invoke(new Action(() =>

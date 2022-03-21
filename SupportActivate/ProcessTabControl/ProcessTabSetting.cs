@@ -91,7 +91,7 @@ namespace SupportActivate.ProcessTabControl
                 var breakVersion = valueUpdate.IndexOf("version:");
                 var valueUpdateNew = valueUpdate.Substring(breakVersion + 8);
                 readerUpdate.Close();
-                double version = formMain.version;
+                string version = formMain.version;
                 if (valueUpdateNew == version.ToString())
                 {
                     formMain.lb_CheckUpdate.Invoke(new Action(() =>

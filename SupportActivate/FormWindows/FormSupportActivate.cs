@@ -25,7 +25,7 @@ namespace FormWindows.SupportActivate
         ProcessTabSetting processTabSetting;
         ProcessTemp processTemp;
         ConfigSetting setting;
-        public double version = 3.6;
+        public string version = "3.6.1";
         public string typeApp = " x64";
         private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(FormSupportActivate));
 
