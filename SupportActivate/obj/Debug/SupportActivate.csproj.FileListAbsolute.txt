@@ -70,7 +70,6 @@ D:\Source_code\Support_Activate_Source\SupportActivate\bin\Debug\EntityFramework
 D:\Source_code\Support_Activate_Source\SupportActivate\bin\Debug\log4net.xml
 D:\Source_code\Support_Activate_Source\SupportActivate\bin\Debug\Newtonsoft.Json.xml
 D:\Source_code\Support_Activate_Source\SupportActivate\bin\Debug\System.Data.SQLite.xml
-D:\Source_code\Support_Activate_Source\SupportActivate\obj\Debug\SupportActivate.csproj.AssemblyReference.cache
 D:\Source_code\Support_Activate_Source\SupportActivate\obj\Debug\SupportActivate.FormWindows.AddKey.resources
 D:\Source_code\Support_Activate_Source\SupportActivate\obj\Debug\SupportActivate.FormWindows.DataKey.resources
 D:\Source_code\Support_Activate_Source\SupportActivate\obj\Debug\SupportActivate.FormWindows.Down_syn_pidkey.resources

@@ -13,7 +13,6 @@ D:\Source_code\Support_Activate_Source\SupportActivate\bin\Release\EntityFramewo
 D:\Source_code\Support_Activate_Source\SupportActivate\bin\Release\log4net.xml
 D:\Source_code\Support_Activate_Source\SupportActivate\bin\Release\Newtonsoft.Json.xml
 D:\Source_code\Support_Activate_Source\SupportActivate\bin\Release\System.Data.SQLite.xml
-D:\Source_code\Support_Activate_Source\SupportActivate\obj\Release\SupportActivate.csproj.AssemblyReference.cache
 D:\Source_code\Support_Activate_Source\SupportActivate\obj\Release\SupportActivate.FormWindows.AddKey.resources
 D:\Source_code\Support_Activate_Source\SupportActivate\obj\Release\SupportActivate.FormWindows.DataKey.resources
 D:\Source_code\Support_Activate_Source\SupportActivate\obj\Release\SupportActivate.FormWindows.Down_syn_pidkey.resources
