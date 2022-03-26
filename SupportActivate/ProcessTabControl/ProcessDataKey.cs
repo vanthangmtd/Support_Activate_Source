@@ -809,6 +809,11 @@ namespace SupportActivate.ProcessTabControl
                 formDataKey.optionCbx = "Windows 10 - Server 2016/2019";
                 checkKey.Start();
             }
+            else if (formDataKey.optionKey.Contains("Win 2021"))
+            {
+                formDataKey.optionCbx = "Windows 10 - Server 2016/2019";
+                checkKey.Start();
+            }
             else if (formDataKey.optionKey.Contains("Win 11"))
             {
                 formDataKey.optionCbx = "Windows 11 - Server 2021";
