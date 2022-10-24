@@ -229,9 +229,23 @@ namespace FormWindows.SupportActivate
 
         private void btn_DataKey_Click(object sender, EventArgs e)
         {
-            DataKey dataKey = new DataKey();
-            dataKey.Show();
-            dataKey.Focus();
+            bool IsOpen = false;
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == nameof(DataKey))
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+
+            if (IsOpen == false)
+            {
+                DataKey dataKey = new DataKey();
+                dataKey.Show();
+                dataKey.Focus();
+            }
         }
 
         //processTabPIDKEY End
