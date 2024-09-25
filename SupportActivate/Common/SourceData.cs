@@ -17,9 +17,10 @@ namespace SupportActivate.Common
             listOption.Add("Activate Office Byphone All"); //7
             listOption.Add("Activate Office 2010 Byphone");
             listOption.Add("Activate Office 2013 Byphone");
-            listOption.Add("Activate Office 2016/2019/2021 Byphone");
+            listOption.Add("Activate Office 2016/2019/2021/2024 Byphone");
             listOption.Add("Activate Office 2019 Volume");
             listOption.Add("Activate Office 2021 Volume");
+            listOption.Add("Activate Office 2024 Volume");
             return listOption;
         }
 
@@ -31,7 +32,7 @@ namespace SupportActivate.Common
             listOption.Add("Office All");
             listOption.Add("Office 2010");
             listOption.Add("Office 2013");
-            listOption.Add("Office 2016/2019/2021");
+            listOption.Add("Office 2016/2019/2021/2024");
             return listOption;
         }
 
@@ -43,7 +44,7 @@ namespace SupportActivate.Common
             listOption.Add("Check Licensed Office All");
             listOption.Add("Check Licensed Office 2010");
             listOption.Add("Check Licensed Office 2013");
-            listOption.Add("Check Licensed Office 2016/2019/2021");
+            listOption.Add("Check Licensed Office 2016/2019/2021/2024");
             listOption.Add("Remove Key Office All");
             listOption.Add("Remove Key Office");
             return listOption;
@@ -63,10 +64,11 @@ namespace SupportActivate.Common
             listOption.Add("Office 2016", @"\office2016");//8
             listOption.Add("Office 2019", @"\office2019");//9
             listOption.Add("Office 2021", @"\office2021");//10
-            listOption.Add("Windows Vista - Server 2008", @"\windowsvista-server2008");//11
-            listOption.Add("SQL", @"\sql");//12
-            listOption.Add("Visual Studio", @"\vs");//13
-            listOption.Add("Other", @"\other");//14
+            listOption.Add("Office 2024", @"\office2024");//11
+            listOption.Add("Windows Vista - Server 2008", @"\windowsvista-server2008");//12
+            listOption.Add("SQL", @"\sql");//13
+            listOption.Add("Visual Studio", @"\vs");//14
+            listOption.Add("Other", @"\other");//15
             return listOption;
         }
 
@@ -226,6 +228,15 @@ namespace SupportActivate.Common
                     @"cscript OSPP.VBS /inpkey:%k1%" + "\r\n" +
                     @"@mode con: cols=100 lines=30" + "\r\n" +
                     @"cscript ospp.vbs /act" + "\r\n");
+            script.Add(13, @"set k1=" + key + "" + "\r\n" +
+                    @"cls" + "\r\n" +
+                    @"if exist ""%ProgramFiles%\Microsoft Office\Office16\ospp.vbs"" cd /d ""%ProgramFiles%\Microsoft Office\Office16""" + "\r\n" +
+                    @"if exist ""%ProgramFiles(x86)%\Microsoft Office\Office16\ospp.vbs"" cd /d ""%ProgramFiles(x86)%\Microsoft Office\Office16""" + "\r\n" +
+                    @"for /f %i in ('dir /b ..\root\Licenses16\ProPlus2024VL*.xrm-ms') do cscript ospp.vbs /inslic:""..\root\Licenses16\%i""" + "\r\n" +
+                    @"@echo on&mode con: cols=20 lines=2" + "\r\n" +
+                    @"cscript OSPP.VBS /inpkey:%k1%" + "\r\n" +
+                    @"@mode con: cols=100 lines=30" + "\r\n" +
+                    @"cscript ospp.vbs /act" + "\r\n");
             switch (luaChon)
             {
                 case 1:
@@ -252,6 +263,8 @@ namespace SupportActivate.Common
                     return script[11];
                 case 12:
                     return script[12];
+                case 13:
+                    return script[13];
                 default:
                     return string.Empty;
             }

@@ -54,7 +54,6 @@ namespace SupportActivate.ProcessTabControl
                 formMain.btn_FileAndCleanPidKey.Text = "Clean";
                 if (string.IsNullOrEmpty(fileNamePidKey))
                 {
-                    int tongKey = 0;
                     items = dataKey.ToString().Split(vbCrLf);
                     try
                     {
@@ -67,13 +66,13 @@ namespace SupportActivate.ProcessTabControl
                                 listPidKeyTemp.Add(str);
                         }
                         listKeyPIDKey = validate.locData(listPidKeyTemp);
-                        tongKey = listKeyPIDKey.Count();
+                        int tongKey = listKeyPIDKey.Count();
                         formMain.lb_CountPidKey.Text = "0/" + tongKey;
                     }
                     catch (Exception ex)
                     {
                         logger.Error(ex);
-                        MessageBox.Show(Messages.MemoryOverflow, Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(MessagesResource.MemoryOverflow, MessagesResource.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -100,7 +99,7 @@ namespace SupportActivate.ProcessTabControl
                 {
                     count_PidKey += 1;
                     var resultCheckKey = processPidkey.CheckKey(listKeyPIDKey[i], optionVersionPidKey, loadKeyFromDB, saveKey);
-                    if (resultCheckKey.Description == Constant.Unsupported_PKeyConfig_InvalidKey)
+                    if (resultCheckKey.Description == ContantResource.Unsupported_PKeyConfig_InvalidKey)
                     {
                         count_InvalidKey += 1;
                         formMain.tbx_InvalidKey.Invoke(new Action(() =>
@@ -110,7 +109,7 @@ namespace SupportActivate.ProcessTabControl
                             formMain.tbx_InvalidKey.AppendText("Time: " + local + "\r\n---------------------\r\n");
                         }));
                     }
-                    else if (resultCheckKey.MAKCount == Constant.KeyBlock || resultCheckKey.ErrorCode == Constant.KeyRetaiBlock)
+                    else if (resultCheckKey.MAKCount == -2 || resultCheckKey.ErrorCode == ContantResource.KeyRetaiBlock)
                     {
                         count_InvalidKey += 1;
                         formMain.tbx_InvalidKey.Invoke(new Action(() =>
@@ -119,9 +118,9 @@ namespace SupportActivate.ProcessTabControl
                             formMain.tbx_InvalidKey.AppendText("Description: " + resultCheckKey.Description + "\r\n");
                             formMain.tbx_InvalidKey.AppendText("SubType: " + resultCheckKey.SubType + "\r\n");
                             formMain.tbx_InvalidKey.AppendText("LicenseType: " + resultCheckKey.LicenseType + "\r\n");
-                            if (resultCheckKey.MAKCount == Constant.KeyBlock)
-                                formMain.tbx_InvalidKey.AppendText("MAKCount: " + resultCheckKey.MAKCount + "\r\n");
-                            if (resultCheckKey.ErrorCode == Constant.KeyRetaiBlock)
+                            if (resultCheckKey.MAKCount == -2)
+                                formMain.tbx_InvalidKey.AppendText("MAKCount: " + ContantResource.KeyBlock + "\r\n");
+                            if (resultCheckKey.ErrorCode == ContantResource.KeyRetaiBlock)
                                 formMain.tbx_InvalidKey.AppendText("ErrorCode: " + resultCheckKey.ErrorCode + "\r\n");
                             formMain.tbx_InvalidKey.AppendText("Time: " + local + "\r\n---------------------\r\n");
                         }));
@@ -136,11 +135,11 @@ namespace SupportActivate.ProcessTabControl
                             formMain.tbx_ValidKey.AppendText("Description: " + resultCheckKey.Description + "\r\n");
                             formMain.tbx_ValidKey.AppendText("SubType: " + resultCheckKey.SubType + "\r\n");
                             formMain.tbx_ValidKey.AppendText("LicenseType: " + resultCheckKey.LicenseType + "\r\n");
-                            if (resultCheckKey.LicenseType == Constant.Retail && !string.IsNullOrEmpty(resultCheckKey.ErrorCode))
+                            if (resultCheckKey.LicenseType == ContantResource.Retail && !string.IsNullOrEmpty(resultCheckKey.ErrorCode))
                                 formMain.tbx_ValidKey.AppendText("ErrorCode: " + resultCheckKey.ErrorCode + "\r\n");
-                            if (resultCheckKey.LicenseType == Constant.Volume)
+                            if (resultCheckKey.LicenseType == ContantResource.Volume)
                                 formMain.tbx_ValidKey.AppendText("MAKCount: " + resultCheckKey.MAKCount + "\r\n");
-                            if (resultCheckKey.LicenseType.Contains(Constant.OEM))
+                            if (resultCheckKey.LicenseType.Contains(ContantResource.OEM))
                             {
                                 formMain.tbx_ValidKey.AppendText("MAKCount: " + resultCheckKey.MAKCount + "\r\n");
                                 if (!string.IsNullOrEmpty(resultCheckKey.ErrorCode))
@@ -219,7 +218,7 @@ namespace SupportActivate.ProcessTabControl
                     // TA: change: merge listVlaue -> textValue
                     string keyUnsupported_PKeyConfig_InvalidKey = string.Empty;
                     string keyBlock = string.Empty;
-                    if (resultCheckKey.Description == Constant.Unsupported_PKeyConfig_InvalidKey)
+                    if (resultCheckKey.Description == ContantResource.Unsupported_PKeyConfig_InvalidKey)
                     {
                         keyUnsupported_PKeyConfig_InvalidKey = "Key: " + resultCheckKey.Key + "\r\n";
                         keyUnsupported_PKeyConfig_InvalidKey = keyUnsupported_PKeyConfig_InvalidKey + "Description: " + resultCheckKey.Description + "\r\n";
@@ -231,15 +230,15 @@ namespace SupportActivate.ProcessTabControl
                             sortedInvalid.Add(localkeyidx, keyUnsupported_PKeyConfig_InvalidKey);
                         }));
                     }
-                    else if (resultCheckKey.MAKCount == Constant.KeyBlock || resultCheckKey.ErrorCode == Constant.KeyRetaiBlock)
+                    else if (resultCheckKey.MAKCount == -2 || resultCheckKey.ErrorCode == ContantResource.KeyRetaiBlock)
                     {
                         keyBlock = "Key: " + resultCheckKey.Key + "\r\n";
                         keyBlock = keyBlock + "Description: " + resultCheckKey.Description + "\r\n";
                         keyBlock = keyBlock + "SubType: " + resultCheckKey.SubType + "\r\n";
                         keyBlock = keyBlock + "LicenseType: " + resultCheckKey.LicenseType + "\r\n";
-                        if (resultCheckKey.MAKCount == Constant.KeyBlock)
-                            keyBlock = keyBlock + "MAKCount: " + resultCheckKey.MAKCount + "\r\n";
-                        if (resultCheckKey.ErrorCode == Constant.KeyRetaiBlock)
+                        if (resultCheckKey.MAKCount == -2)
+                            keyBlock = keyBlock + "MAKCount: " + ContantResource.KeyBlock + "\r\n";
+                        if (resultCheckKey.ErrorCode == ContantResource.KeyRetaiBlock)
                             keyBlock = keyBlock + "ErrorCode: " + resultCheckKey.ErrorCode + "\r\n";
                         keyBlock = keyBlock + "Time: " + local + "\r\n---------------------\r\n";
                         count_InvalidKey += 1;
@@ -258,11 +257,11 @@ namespace SupportActivate.ProcessTabControl
                         keyValid = keyValid + "Description: " + resultCheckKey.Description + "\r\n";
                         keyValid = keyValid + "SubType: " + resultCheckKey.SubType + "\r\n";
                         keyValid = keyValid + "LicenseType: " + resultCheckKey.LicenseType + "\r\n";
-                        if (resultCheckKey.LicenseType == Constant.Retail && !string.IsNullOrEmpty(resultCheckKey.ErrorCode))
+                        if (resultCheckKey.LicenseType == ContantResource.Retail && !string.IsNullOrEmpty(resultCheckKey.ErrorCode))
                             keyValid = keyValid + "ErrorCode: " + resultCheckKey.ErrorCode + "\r\n";
-                        if (resultCheckKey.LicenseType == Constant.Volume)
+                        if (resultCheckKey.LicenseType == ContantResource.Volume)
                             keyValid = keyValid + "MAKCount: " + resultCheckKey.MAKCount + "\r\n";
-                        if (resultCheckKey.LicenseType.Contains(Constant.OEM))
+                        if (resultCheckKey.LicenseType.Contains(ContantResource.OEM))
                         {
                             keyValid = keyValid + "MAKCount: " + resultCheckKey.MAKCount + "\r\n";
                             if (!string.IsNullOrEmpty(resultCheckKey.ErrorCode))
@@ -344,7 +343,7 @@ namespace SupportActivate.ProcessTabControl
                 {
                     count_PidKey += 1;
                     var resultCheckKey = processPidkey.CheckKeyAdv(listKeyPIDKey[i], optionVersionPidKey, loadKeyFromDB, saveKey);
-                    if (resultCheckKey.Description == Constant.Unsupported_PKeyConfig_InvalidKey)
+                    if (resultCheckKey.Description == ContantResource.Unsupported_PKeyConfig_InvalidKey)
                     {
                         count_InvalidKey += 1;
                         formMain.tbx_InvalidKey.Invoke(new Action(() =>
@@ -354,7 +353,7 @@ namespace SupportActivate.ProcessTabControl
                             formMain.tbx_InvalidKey.AppendText("Time: " + local + "\r\n---------------------\r\n");
                         }));
                     }
-                    else if (resultCheckKey.MAKCount == Constant.KeyBlock || resultCheckKey.ErrorCode == Constant.KeyRetaiBlock)
+                    else if (resultCheckKey.MAKCount == -2 || resultCheckKey.ErrorCode == ContantResource.KeyRetaiBlock)
                     {
                         count_InvalidKey += 1;
                         formMain.tbx_InvalidKey.Invoke(new Action(() =>
@@ -363,9 +362,9 @@ namespace SupportActivate.ProcessTabControl
                             formMain.tbx_InvalidKey.AppendText("Description: " + resultCheckKey.Description + "\r\n");
                             formMain.tbx_InvalidKey.AppendText("SubType: " + resultCheckKey.SubType + "\r\n");
                             formMain.tbx_InvalidKey.AppendText("LicenseType: " + resultCheckKey.LicenseType + "\r\n");
-                            if (resultCheckKey.MAKCount == Constant.KeyBlock)
-                                formMain.tbx_InvalidKey.AppendText("MAKCount: " + resultCheckKey.MAKCount + "\r\n");
-                            if (resultCheckKey.ErrorCode == Constant.KeyRetaiBlock)
+                            if (resultCheckKey.MAKCount == -2)
+                                formMain.tbx_InvalidKey.AppendText("MAKCount: " + ContantResource.KeyBlock + "\r\n");
+                            if (resultCheckKey.ErrorCode == ContantResource.KeyRetaiBlock)
                                 formMain.tbx_InvalidKey.AppendText("ErrorCode: " + resultCheckKey.ErrorCode + "\r\n");
                             formMain.tbx_InvalidKey.AppendText("Time: " + local + "\r\n---------------------\r\n");
                         }));
@@ -380,9 +379,9 @@ namespace SupportActivate.ProcessTabControl
                             formMain.tbx_ValidKey.AppendText("Description: " + resultCheckKey.Description + "\r\n");
                             formMain.tbx_ValidKey.AppendText("SubType: " + resultCheckKey.SubType + "\r\n");
                             formMain.tbx_ValidKey.AppendText("LicenseType: " + resultCheckKey.LicenseType + "\r\n");
-                            if (resultCheckKey.LicenseType == Constant.Retail && !string.IsNullOrEmpty(resultCheckKey.ErrorCode))
+                            if (resultCheckKey.LicenseType == ContantResource.Retail && !string.IsNullOrEmpty(resultCheckKey.ErrorCode))
                                 formMain.tbx_ValidKey.AppendText("ErrorCode: " + resultCheckKey.ErrorCode + "\r\n");
-                            if (resultCheckKey.LicenseType == Constant.Volume)
+                            if (resultCheckKey.LicenseType == ContantResource.Volume)
                             {
                                 formMain.tbx_ValidKey.AppendText("MAKCount: " + resultCheckKey.MAKCount + "\r\n");
                                 if (!string.IsNullOrEmpty(resultCheckKey.ErrorCode))
@@ -391,7 +390,7 @@ namespace SupportActivate.ProcessTabControl
                                     formMain.tbx_ValidKey.AppendText("Result Get Web: " + resultCheckKey.KeyGetWeb + "\r\n");
                             }
 
-                            if (resultCheckKey.LicenseType.Contains(Constant.OEM))
+                            if (resultCheckKey.LicenseType.Contains(ContantResource.OEM))
                             {
                                 formMain.tbx_ValidKey.AppendText("MAKCount: " + resultCheckKey.MAKCount + "\r\n");
                                 if (!string.IsNullOrEmpty(resultCheckKey.ErrorCode))
@@ -479,7 +478,7 @@ namespace SupportActivate.ProcessTabControl
                     // TA: change: merge listVlaue -> textValue
                     string keyUnsupported_PKeyConfig_InvalidKey = string.Empty;
                     string keyBlock = string.Empty;
-                    if (resultCheckKey.Description == Constant.Unsupported_PKeyConfig_InvalidKey)
+                    if (resultCheckKey.Description == ContantResource.Unsupported_PKeyConfig_InvalidKey)
                     {
                         keyUnsupported_PKeyConfig_InvalidKey = "Key: " + resultCheckKey.Key + "\r\n";
                         keyUnsupported_PKeyConfig_InvalidKey = keyUnsupported_PKeyConfig_InvalidKey + "Description: " + resultCheckKey.Description + "\r\n";
@@ -491,15 +490,15 @@ namespace SupportActivate.ProcessTabControl
                             sortedInvalid.Add(localkeyidx, keyUnsupported_PKeyConfig_InvalidKey);
                         }));
                     }
-                    else if (resultCheckKey.MAKCount == Constant.KeyBlock || resultCheckKey.ErrorCode == Constant.KeyRetaiBlock)
+                    else if (resultCheckKey.MAKCount == -2 || resultCheckKey.ErrorCode == ContantResource.KeyRetaiBlock)
                     {
                         keyBlock = "Key: " + resultCheckKey.Key + "\r\n";
                         keyBlock = keyBlock + "Description: " + resultCheckKey.Description + "\r\n";
                         keyBlock = keyBlock + "SubType: " + resultCheckKey.SubType + "\r\n";
                         keyBlock = keyBlock + "LicenseType: " + resultCheckKey.LicenseType + "\r\n";
-                        if (resultCheckKey.MAKCount == Constant.KeyBlock)
-                            keyBlock = keyBlock + "MAKCount: " + resultCheckKey.MAKCount + "\r\n";
-                        if (resultCheckKey.ErrorCode == Constant.KeyRetaiBlock)
+                        if (resultCheckKey.MAKCount == -2)
+                            keyBlock = keyBlock + "MAKCount: " + ContantResource.KeyBlock + "\r\n";
+                        if (resultCheckKey.ErrorCode == ContantResource.KeyRetaiBlock)
                             keyBlock = keyBlock + "ErrorCode: " + resultCheckKey.ErrorCode + "\r\n";
                         keyBlock = keyBlock + "Time: " + local + "\r\n---------------------\r\n";
                         count_InvalidKey += 1;
@@ -518,9 +517,9 @@ namespace SupportActivate.ProcessTabControl
                         keyValid = keyValid + "Description: " + resultCheckKey.Description + "\r\n";
                         keyValid = keyValid + "SubType: " + resultCheckKey.SubType + "\r\n";
                         keyValid = keyValid + "LicenseType: " + resultCheckKey.LicenseType + "\r\n";
-                        if (resultCheckKey.LicenseType == Constant.Retail && !string.IsNullOrEmpty(resultCheckKey.ErrorCode))
+                        if (resultCheckKey.LicenseType == ContantResource.Retail && !string.IsNullOrEmpty(resultCheckKey.ErrorCode))
                             keyValid = keyValid + "ErrorCode: " + resultCheckKey.ErrorCode + "\r\n";
-                        if (resultCheckKey.LicenseType == Constant.Volume)
+                        if (resultCheckKey.LicenseType == ContantResource.Volume)
                         {
                             keyValid = keyValid + "MAKCount: " + resultCheckKey.MAKCount + "\r\n";
                             if (!string.IsNullOrEmpty(resultCheckKey.ErrorCode))
@@ -528,7 +527,7 @@ namespace SupportActivate.ProcessTabControl
                             if (!string.IsNullOrEmpty(resultCheckKey.KeyGetWeb))
                                 keyValid = keyValid + "Result Get Web: " + resultCheckKey.KeyGetWeb + "\r\n";
                         }
-                        if (resultCheckKey.LicenseType.Contains(Constant.OEM))
+                        if (resultCheckKey.LicenseType.Contains(ContantResource.OEM))
                         {
                             keyValid = keyValid + "MAKCount: " + resultCheckKey.MAKCount + "\r\n";
                             if (!string.IsNullOrEmpty(resultCheckKey.ErrorCode))
@@ -594,14 +593,14 @@ namespace SupportActivate.ProcessTabControl
             if (formMain.btn_CheckKey.Text == "Check Key")
             {
                 if (string.IsNullOrEmpty(formMain.tbx_PidKeyInput.Text.Replace(" ", "").Trim()))
-                    MessageBox.Show(Messages.EnterPidkey, Messages.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(MessagesResource.EnterPidkey, MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else
                 {
                     formMain.lb_CountPidKey.Text = "0/" + listKeyPIDKey.Count();
                     formMain.tbx_ValidKey.Clear();
                     formMain.tbx_InvalidKey.Clear();
                     if (listKeyPIDKey.Count() == 0)
-                        formMain.tbx_InvalidKey.Text = "Key: " + formMain.tbx_PidKeyInput.Text + "\r\n" + Constant.Unsupported_PKeyConfig_InvalidKey + "\r\n";
+                        formMain.tbx_InvalidKey.Text = "Key: " + formMain.tbx_PidKeyInput.Text + "\r\n" + ContantResource.Unsupported_PKeyConfig_InvalidKey + "\r\n";
                     formMain.btn_CheckKey.Text = "Stop";
                     cancelPIDKey = false;
                     string optionVersionPidKey = formMain.cbb_VersionPidKey.Text;
@@ -614,10 +613,10 @@ namespace SupportActivate.ProcessTabControl
                         if (optionVersionPidKey == listOption.ElementAt(0).Key ||
                            optionVersionPidKey == listOption.ElementAt(1).Key ||
                            optionVersionPidKey == listOption.ElementAt(6).Key ||
-                           optionVersionPidKey == listOption.ElementAt(11).Key ||
                            optionVersionPidKey == listOption.ElementAt(12).Key ||
                            optionVersionPidKey == listOption.ElementAt(13).Key ||
-                           optionVersionPidKey == listOption.ElementAt(14).Key)
+                           optionVersionPidKey == listOption.ElementAt(14).Key ||
+                           optionVersionPidKey == listOption.ElementAt(15).Key)
                             CheckKeyPIDKeyWin7Office2010(optionVersionPidKey);
                         else
                             CheckKeyPIDKey(optionVersionPidKey);
@@ -636,7 +635,7 @@ namespace SupportActivate.ProcessTabControl
             else
             {
                 cancelPIDKey = true;
-                MessageBox.Show(Messages.StopPidKey, Messages.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(MessagesResource.StopPidKey, MessagesResource.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -644,7 +643,7 @@ namespace SupportActivate.ProcessTabControl
         {
             if (formMain.IsAdministrator() == false)
             {
-                var resultComfirm = MessageBox.Show(Messages.ReopenWithAdmin, Messages.success, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var resultComfirm = MessageBox.Show(MessagesResource.ReopenWithAdmin, MessagesResource.success, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (resultComfirm == DialogResult.Yes)
                 {
                     processTemp.CreateFileTemp();
@@ -670,7 +669,7 @@ namespace SupportActivate.ProcessTabControl
                 if (formMain.btn_CheckAdv.Text == "Check Advanced")
                 {
                     if (string.IsNullOrEmpty(formMain.tbx_PidKeyInput.Text.Replace(" ", "").Trim()))
-                        MessageBox.Show(Messages.EnterPidkey, Messages.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show(MessagesResource.EnterPidkey, MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     else
                     {
                         formMain.lb_CountPidKey.Text = "0/" + listKeyPIDKey.Count();
@@ -695,10 +694,10 @@ namespace SupportActivate.ProcessTabControl
                             if (optionVersionPidKey == listOption.ElementAt(0).Key ||
                                optionVersionPidKey == listOption.ElementAt(1).Key ||
                                optionVersionPidKey == listOption.ElementAt(6).Key ||
-                               optionVersionPidKey == listOption.ElementAt(11).Key ||
                                optionVersionPidKey == listOption.ElementAt(12).Key ||
                                optionVersionPidKey == listOption.ElementAt(13).Key ||
-                               optionVersionPidKey == listOption.ElementAt(14).Key)
+                               optionVersionPidKey == listOption.ElementAt(14).Key ||
+                               optionVersionPidKey == listOption.ElementAt(15).Key)
                                 CheckKeyAdv_PIDKeyWin7Office2010(optionVersionPidKey);
                             else
                                 CheckKeyPIDKeyAdv(optionVersionPidKey);
@@ -709,7 +708,7 @@ namespace SupportActivate.ProcessTabControl
                 else
                 {
                     cancelPIDKey = true;
-                    MessageBox.Show(Messages.StopPidKey, Messages.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(MessagesResource.StopPidKey, MessagesResource.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -809,7 +808,7 @@ namespace SupportActivate.ProcessTabControl
                         formMain.btn_CheckAdv.Enabled = false;
                 }
                 else
-                    MessageBox.Show(Messages.DeleteAllKey, Messages.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(MessagesResource.DeleteAllKey, MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 formMain.btn_FileAndCleanPidKey.Text = "Clean";
             }
             else if (formMain.btn_FileAndCleanPidKey.Text == "Clean")
@@ -858,13 +857,13 @@ namespace SupportActivate.ProcessTabControl
                 List<pid> listKeyOrther = new List<pid>();
                 List<pid> listKeyVolumn = new List<pid>();
                 List<pid> listKeyRetail = new List<pid>();
-                listKeyRetail = listKeyPIDKeyInputSoftPIDKey.Where(x => x.LicenseType == Constant.Retail).Select(x => x).ToList();
-                listKeyOnline = listKeyRetail.Where(x => x.ErrorCode == Constant.Online && x.LicenseType == Constant.Retail).Select(x => x).ToList();
-                listKey008 = listKeyRetail.Where(x => x.ErrorCode == Constant.KeyRetai4C008 && x.LicenseType == Constant.Retail).Select(x => x).ToList();
-                listKeyOrther = listKeyRetail.Where(x => x.ErrorCode != Constant.KeyRetai4C008 && x.ErrorCode != Constant.Online && x.LicenseType == Constant.Retail).Select(x => x).ToList();
+                listKeyRetail = listKeyPIDKeyInputSoftPIDKey.Where(x => x.LicenseType == ContantResource.Retail).Select(x => x).ToList();
+                listKeyOnline = listKeyRetail.Where(x => x.ErrorCode == ContantResource.Online && x.LicenseType == ContantResource.Retail).Select(x => x).ToList();
+                listKey008 = listKeyRetail.Where(x => x.ErrorCode == ContantResource.KeyRetai4C008 && x.LicenseType == ContantResource.Retail).Select(x => x).ToList();
+                listKeyOrther = listKeyRetail.Where(x => x.ErrorCode != ContantResource.KeyRetai4C008 && x.ErrorCode != ContantResource.Online && x.LicenseType == ContantResource.Retail).Select(x => x).ToList();
                 listKeyVolumn = listKeyPIDKeyInputSoftPIDKey
-                                    .Where(x => x.LicenseType == Constant.Volume || x.LicenseType.Contains(Constant.OEM)).Select(x => x).ToList();
-                
+                                    .Where(x => x.LicenseType == ContantResource.Volume || x.LicenseType.Contains(ContantResource.OEM)).Select(x => x).ToList();
+
                 if (listKeyOnline.Count > 0)
                     WriteResultSoftPidKey(listKeyOnline);
                 if (listKey008.Count > 0)
@@ -873,12 +872,11 @@ namespace SupportActivate.ProcessTabControl
                     WriteResultSoftPidKey(listKeyOrther);
                 if (listKeyVolumn.Count > 0)
                 {
-                    int MAKCount = 0;
                     List<PidKeySoft> listKeyVolumnSoft = new List<PidKeySoft>();
                     List<pid> listKeyVolumnOrther = new List<pid>();
                     for (int i = 0; i < listKeyVolumn.Count; i++)
                     {
-                        if (int.TryParse(listKeyVolumn[i].MAKCount, out MAKCount))
+                        if (listKeyVolumn[i].MAKCount > -2)
                             listKeyVolumnSoft.Add(new PidKeySoft()
                             {
                                 Key = listKeyVolumn[i].Key,
@@ -886,7 +884,7 @@ namespace SupportActivate.ProcessTabControl
                                 SubType = listKeyVolumn[i].SubType,
                                 LicenseType = listKeyVolumn[i].LicenseType,
                                 ErrorCode = listKeyVolumn[i].ErrorCode,
-                                MAKCount = MAKCount,
+                                MAKCount = listKeyVolumn[i].MAKCount,
                                 KeyGetWeb = listKeyVolumn[i].KeyGetWeb
                             });
                         else
@@ -894,7 +892,6 @@ namespace SupportActivate.ProcessTabControl
                     }
                     WriteResultSoftPidKeyVolumn(listKeyVolumnSoft.OrderByDescending(x => x.MAKCount).Select(x => x).ToList(), listKeyVolumnOrther);
                 }
-                
             })
             { IsBackground = true }.Start();
         }
@@ -909,9 +906,9 @@ namespace SupportActivate.ProcessTabControl
                     formMain.tbx_ValidKey.AppendText("Description: " + resultCheckKey.Description + "\r\n");
                     formMain.tbx_ValidKey.AppendText("SubType: " + resultCheckKey.SubType + "\r\n");
                     formMain.tbx_ValidKey.AppendText("LicenseType: " + resultCheckKey.LicenseType + "\r\n");
-                    if (resultCheckKey.LicenseType == Constant.Retail && !string.IsNullOrEmpty(resultCheckKey.ErrorCode))
+                    if (resultCheckKey.LicenseType == ContantResource.Retail && !string.IsNullOrEmpty(resultCheckKey.ErrorCode))
                         formMain.tbx_ValidKey.AppendText("ErrorCode: " + resultCheckKey.ErrorCode + "\r\n");
-                    if (resultCheckKey.LicenseType == Constant.Volume)
+                    if (resultCheckKey.LicenseType == ContantResource.Volume)
                     {
                         formMain.tbx_ValidKey.AppendText("MAKCount: " + resultCheckKey.MAKCount + "\r\n");
                         if (!string.IsNullOrEmpty(resultCheckKey.ErrorCode))
@@ -920,7 +917,7 @@ namespace SupportActivate.ProcessTabControl
                             formMain.tbx_ValidKey.AppendText("Result Get Web: " + resultCheckKey.KeyGetWeb + "\r\n");
                     }
 
-                    if (resultCheckKey.LicenseType.Contains(Constant.OEM))
+                    if (resultCheckKey.LicenseType.Contains(ContantResource.OEM))
                     {
                         formMain.tbx_ValidKey.AppendText("MAKCount: " + resultCheckKey.MAKCount + "\r\n");
                         if (!string.IsNullOrEmpty(resultCheckKey.ErrorCode))
@@ -943,9 +940,9 @@ namespace SupportActivate.ProcessTabControl
                     formMain.tbx_ValidKey.AppendText("Description: " + resultCheckKey.Description + "\r\n");
                     formMain.tbx_ValidKey.AppendText("SubType: " + resultCheckKey.SubType + "\r\n");
                     formMain.tbx_ValidKey.AppendText("LicenseType: " + resultCheckKey.LicenseType + "\r\n");
-                    if (resultCheckKey.LicenseType == Constant.Retail && !string.IsNullOrEmpty(resultCheckKey.ErrorCode))
+                    if (resultCheckKey.LicenseType == ContantResource.Retail && !string.IsNullOrEmpty(resultCheckKey.ErrorCode))
                         formMain.tbx_ValidKey.AppendText("ErrorCode: " + resultCheckKey.ErrorCode + "\r\n");
-                    if (resultCheckKey.LicenseType == Constant.Volume)
+                    if (resultCheckKey.LicenseType == ContantResource.Volume)
                     {
                         formMain.tbx_ValidKey.AppendText("MAKCount: " + resultCheckKey.MAKCount + "\r\n");
                         if (!string.IsNullOrEmpty(resultCheckKey.ErrorCode))
@@ -954,7 +951,7 @@ namespace SupportActivate.ProcessTabControl
                             formMain.tbx_ValidKey.AppendText("Result Get Web: " + resultCheckKey.KeyGetWeb + "\r\n");
                     }
 
-                    if (resultCheckKey.LicenseType.Contains(Constant.OEM))
+                    if (resultCheckKey.LicenseType.Contains(ContantResource.OEM))
                     {
                         formMain.tbx_ValidKey.AppendText("MAKCount: " + resultCheckKey.MAKCount + "\r\n");
                         if (!string.IsNullOrEmpty(resultCheckKey.ErrorCode))
@@ -974,9 +971,9 @@ namespace SupportActivate.ProcessTabControl
                     formMain.tbx_ValidKey.AppendText("Description: " + resultCheckKey.Description + "\r\n");
                     formMain.tbx_ValidKey.AppendText("SubType: " + resultCheckKey.SubType + "\r\n");
                     formMain.tbx_ValidKey.AppendText("LicenseType: " + resultCheckKey.LicenseType + "\r\n");
-                    if (resultCheckKey.LicenseType == Constant.Retail && !string.IsNullOrEmpty(resultCheckKey.ErrorCode))
+                    if (resultCheckKey.LicenseType == ContantResource.Retail && !string.IsNullOrEmpty(resultCheckKey.ErrorCode))
                         formMain.tbx_ValidKey.AppendText("ErrorCode: " + resultCheckKey.ErrorCode + "\r\n");
-                    if (resultCheckKey.LicenseType == Constant.Volume)
+                    if (resultCheckKey.LicenseType == ContantResource.Volume)
                     {
                         formMain.tbx_ValidKey.AppendText("MAKCount: " + resultCheckKey.MAKCount + "\r\n");
                         if (!string.IsNullOrEmpty(resultCheckKey.ErrorCode))
@@ -985,7 +982,7 @@ namespace SupportActivate.ProcessTabControl
                             formMain.tbx_ValidKey.AppendText("Result Get Web: " + resultCheckKey.KeyGetWeb + "\r\n");
                     }
 
-                    if (resultCheckKey.LicenseType.Contains(Constant.OEM))
+                    if (resultCheckKey.LicenseType.Contains(ContantResource.OEM))
                     {
                         formMain.tbx_ValidKey.AppendText("MAKCount: " + resultCheckKey.MAKCount + "\r\n");
                         if (!string.IsNullOrEmpty(resultCheckKey.ErrorCode))

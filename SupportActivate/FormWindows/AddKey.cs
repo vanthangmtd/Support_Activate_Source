@@ -38,7 +38,8 @@ namespace SupportActivate.FormWindows
                 pid.Description = string.IsNullOrEmpty(tbx_Description.Text) ? string.Empty : tbx_Description.Text;
                 pid.SubType = string.IsNullOrEmpty(tbx_SubType.Text) ? string.Empty : tbx_SubType.Text;
                 pid.LicenseType = string.IsNullOrEmpty(tbx_LicenseType.Text) ? string.Empty : tbx_LicenseType.Text;
-                pid.MAKCount = string.IsNullOrEmpty(Regex.Replace(tbx_MAKCount.Text, @"\D", "")) ? string.Empty : Regex.Replace(tbx_MAKCount.Text, @"\D", "");
+                var count = -1;
+                pid.MAKCount = int.TryParse(Regex.Replace(tbx_MAKCount.Text, @"\D", ""), out count) ? count : -1;
                 pid.ErrorCode = string.IsNullOrEmpty(tbx_ErrorCode.Text) ? string.Empty : tbx_ErrorCode.Text;
                 pid.KeyGetWeb = getWeb == "Select Option" ? string.Empty : getWeb;
 

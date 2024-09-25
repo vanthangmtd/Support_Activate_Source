@@ -74,7 +74,7 @@ namespace SupportActivate.Setting
 
             if (PIDKeyStatus)
             {
-                formMain.tbx_ValidKey.Text = Messages.AdvancedCheckPidkey;
+                formMain.tbx_ValidKey.Text = MessagesResource.AdvancedCheckPidkey;
             }
             else
                 formMain.tbx_ValidKey.Text = string.Empty;

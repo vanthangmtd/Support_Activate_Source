@@ -105,7 +105,8 @@
             this.menu_SynchronizationPidkey});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1225, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(919, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -121,56 +122,56 @@
             this.toolStripSeparator6,
             this.menu_Close});
             this.menu_File.Name = "menu_File";
-            this.menu_File.Size = new System.Drawing.Size(46, 24);
+            this.menu_File.Size = new System.Drawing.Size(37, 20);
             this.menu_File.Text = "File";
             // 
             // menu_SaveDBToFileText
             // 
             this.menu_SaveDBToFileText.Name = "menu_SaveDBToFileText";
-            this.menu_SaveDBToFileText.Size = new System.Drawing.Size(312, 26);
+            this.menu_SaveDBToFileText.Size = new System.Drawing.Size(243, 22);
             this.menu_SaveDBToFileText.Text = "Save DB to file text";
             this.menu_SaveDBToFileText.Click += new System.EventHandler(this.menu_SaveDBToFileText_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(309, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(240, 6);
             // 
             // menu_BackupDatabase
             // 
             this.menu_BackupDatabase.Name = "menu_BackupDatabase";
-            this.menu_BackupDatabase.Size = new System.Drawing.Size(312, 26);
+            this.menu_BackupDatabase.Size = new System.Drawing.Size(243, 22);
             this.menu_BackupDatabase.Text = "Backup Database";
             this.menu_BackupDatabase.Click += new System.EventHandler(this.menu_BackupDatabase_Click);
             // 
             // menu_RestoreDatabase
             // 
             this.menu_RestoreDatabase.Name = "menu_RestoreDatabase";
-            this.menu_RestoreDatabase.Size = new System.Drawing.Size(312, 26);
+            this.menu_RestoreDatabase.Size = new System.Drawing.Size(243, 22);
             this.menu_RestoreDatabase.Text = "Restore Database";
             this.menu_RestoreDatabase.Click += new System.EventHandler(this.menu_RestoreDatabase_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(309, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(240, 6);
             // 
             // menu_AddDatabase
             // 
             this.menu_AddDatabase.Name = "menu_AddDatabase";
-            this.menu_AddDatabase.Size = new System.Drawing.Size(312, 26);
+            this.menu_AddDatabase.Size = new System.Drawing.Size(243, 22);
             this.menu_AddDatabase.Text = "Add Database";
             this.menu_AddDatabase.Click += new System.EventHandler(this.menu_AddDatabase_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(309, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(240, 6);
             // 
             // menu_Close
             // 
             this.menu_Close.Name = "menu_Close";
-            this.menu_Close.Size = new System.Drawing.Size(312, 26);
+            this.menu_Close.Size = new System.Drawing.Size(243, 22);
             this.menu_Close.Text = "Close                                   Alt+F4";
             this.menu_Close.Click += new System.EventHandler(this.menu_Close_Click);
             // 
@@ -193,46 +194,46 @@
             this.menu_DeleteTheSelectedKey,
             this.menu_RecoveryTheSelectedKey});
             this.menu_Action.Name = "menu_Action";
-            this.menu_Action.Size = new System.Drawing.Size(66, 24);
+            this.menu_Action.Size = new System.Drawing.Size(54, 20);
             this.menu_Action.Text = "Action";
             // 
             // menu_AddKey
             // 
             this.menu_AddKey.Name = "menu_AddKey";
-            this.menu_AddKey.Size = new System.Drawing.Size(472, 26);
+            this.menu_AddKey.Size = new System.Drawing.Size(378, 22);
             this.menu_AddKey.Text = "Add Key";
             this.menu_AddKey.Click += new System.EventHandler(this.menu_AddKey_Click);
             // 
             // menu_SearchKey
             // 
             this.menu_SearchKey.Name = "menu_SearchKey";
-            this.menu_SearchKey.Size = new System.Drawing.Size(472, 26);
+            this.menu_SearchKey.Size = new System.Drawing.Size(378, 22);
             this.menu_SearchKey.Text = "Search Key                                                               Ctrl+F";
             this.menu_SearchKey.Click += new System.EventHandler(this.menu_SearchKey_Click);
             // 
             // menu_ShowKeyBlock
             // 
             this.menu_ShowKeyBlock.Name = "menu_ShowKeyBlock";
-            this.menu_ShowKeyBlock.Size = new System.Drawing.Size(472, 26);
+            this.menu_ShowKeyBlock.Size = new System.Drawing.Size(378, 22);
             this.menu_ShowKeyBlock.Text = "Show key block";
             this.menu_ShowKeyBlock.Click += new System.EventHandler(this.menu_ShowKeyBlock_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(469, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(375, 6);
             // 
             // menu_Refresh
             // 
             this.menu_Refresh.Name = "menu_Refresh";
-            this.menu_Refresh.Size = new System.Drawing.Size(472, 26);
+            this.menu_Refresh.Size = new System.Drawing.Size(378, 22);
             this.menu_Refresh.Text = "Refresh                                                                     F5";
             this.menu_Refresh.Click += new System.EventHandler(this.menu_Refresh_Click);
             // 
             // menu_RefreshDatabase
             // 
             this.menu_RefreshDatabase.Name = "menu_RefreshDatabase";
-            this.menu_RefreshDatabase.Size = new System.Drawing.Size(472, 26);
+            this.menu_RefreshDatabase.Size = new System.Drawing.Size(378, 22);
             this.menu_RefreshDatabase.Text = "Refresh database";
             this.menu_RefreshDatabase.Click += new System.EventHandler(this.menu_RefreshDatabase_Click);
             // 
@@ -240,7 +241,7 @@
             // 
             this.menu_RecheckTheSelectedKey.Enabled = false;
             this.menu_RecheckTheSelectedKey.Name = "menu_RecheckTheSelectedKey";
-            this.menu_RecheckTheSelectedKey.Size = new System.Drawing.Size(472, 26);
+            this.menu_RecheckTheSelectedKey.Size = new System.Drawing.Size(378, 22);
             this.menu_RecheckTheSelectedKey.Text = "Recheck the selected key";
             this.menu_RecheckTheSelectedKey.Click += new System.EventHandler(this.menu_RecheckTheSelectedKey_Click);
             // 
@@ -248,20 +249,20 @@
             // 
             this.menu_RecheckInformationTheSelectedKey.Enabled = false;
             this.menu_RecheckInformationTheSelectedKey.Name = "menu_RecheckInformationTheSelectedKey";
-            this.menu_RecheckInformationTheSelectedKey.Size = new System.Drawing.Size(472, 26);
+            this.menu_RecheckInformationTheSelectedKey.Size = new System.Drawing.Size(378, 22);
             this.menu_RecheckInformationTheSelectedKey.Text = "Recheck information the selected key";
             this.menu_RecheckInformationTheSelectedKey.Click += new System.EventHandler(this.menu_RecheckInformationTheSelectedKey_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(469, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(375, 6);
             // 
             // menu_CopyTheSelectedKey
             // 
             this.menu_CopyTheSelectedKey.Enabled = false;
             this.menu_CopyTheSelectedKey.Name = "menu_CopyTheSelectedKey";
-            this.menu_CopyTheSelectedKey.Size = new System.Drawing.Size(472, 26);
+            this.menu_CopyTheSelectedKey.Size = new System.Drawing.Size(378, 22);
             this.menu_CopyTheSelectedKey.Text = "Copy the selected key                                            Ctrl+C";
             this.menu_CopyTheSelectedKey.Click += new System.EventHandler(this.menu_CopyTheSelectedKey_Click);
             // 
@@ -269,20 +270,20 @@
             // 
             this.menu_CopyTheSelectedKeyAndTheirInformation.Enabled = false;
             this.menu_CopyTheSelectedKeyAndTheirInformation.Name = "menu_CopyTheSelectedKeyAndTheirInformation";
-            this.menu_CopyTheSelectedKeyAndTheirInformation.Size = new System.Drawing.Size(472, 26);
+            this.menu_CopyTheSelectedKeyAndTheirInformation.Size = new System.Drawing.Size(378, 22);
             this.menu_CopyTheSelectedKeyAndTheirInformation.Text = "Copy the selected key and their information     Ctrl+Alt+C";
             this.menu_CopyTheSelectedKeyAndTheirInformation.Click += new System.EventHandler(this.menu_CopyTheSelectedKeyAndTheirInformation_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(469, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(375, 6);
             // 
             // menu_ChangeTheSelectedKeyToKeyblock
             // 
             this.menu_ChangeTheSelectedKeyToKeyblock.Enabled = false;
             this.menu_ChangeTheSelectedKeyToKeyblock.Name = "menu_ChangeTheSelectedKeyToKeyblock";
-            this.menu_ChangeTheSelectedKeyToKeyblock.Size = new System.Drawing.Size(472, 26);
+            this.menu_ChangeTheSelectedKeyToKeyblock.Size = new System.Drawing.Size(378, 22);
             this.menu_ChangeTheSelectedKeyToKeyblock.Text = "Change the selected key to Keyblock                  Shift+Del";
             this.menu_ChangeTheSelectedKeyToKeyblock.Click += new System.EventHandler(this.menu_ChangeTheSelectedKeyToKeyblock_Click);
             // 
@@ -290,7 +291,7 @@
             // 
             this.menu_DeleteTheSelectedKey.Enabled = false;
             this.menu_DeleteTheSelectedKey.Name = "menu_DeleteTheSelectedKey";
-            this.menu_DeleteTheSelectedKey.Size = new System.Drawing.Size(472, 26);
+            this.menu_DeleteTheSelectedKey.Size = new System.Drawing.Size(378, 22);
             this.menu_DeleteTheSelectedKey.Text = "Delete the selected key                                          Del";
             this.menu_DeleteTheSelectedKey.Click += new System.EventHandler(this.menu_DeleteTheSelectedKey_Click);
             // 
@@ -298,7 +299,7 @@
             // 
             this.menu_RecoveryTheSelectedKey.Enabled = false;
             this.menu_RecoveryTheSelectedKey.Name = "menu_RecoveryTheSelectedKey";
-            this.menu_RecoveryTheSelectedKey.Size = new System.Drawing.Size(472, 26);
+            this.menu_RecoveryTheSelectedKey.Size = new System.Drawing.Size(378, 22);
             this.menu_RecoveryTheSelectedKey.Text = "Recovery the selected key";
             this.menu_RecoveryTheSelectedKey.Click += new System.EventHandler(this.menu_RecoveryTheSelectedKey_Click);
             // 
@@ -309,27 +310,27 @@
             this.menu_UploadPidkey,
             this.menu_DownloadPidkey});
             this.menu_SynchronizationPidkey.Name = "menu_SynchronizationPidkey";
-            this.menu_SynchronizationPidkey.Size = new System.Drawing.Size(175, 24);
+            this.menu_SynchronizationPidkey.Size = new System.Drawing.Size(142, 20);
             this.menu_SynchronizationPidkey.Text = "Synchronization Pidkey";
             // 
             // menu_RegisterToken
             // 
             this.menu_RegisterToken.Name = "menu_RegisterToken";
-            this.menu_RegisterToken.Size = new System.Drawing.Size(209, 26);
+            this.menu_RegisterToken.Size = new System.Drawing.Size(166, 22);
             this.menu_RegisterToken.Text = "Register token";
             this.menu_RegisterToken.Click += new System.EventHandler(this.menu_RegisterToken_Click);
             // 
             // menu_UploadPidkey
             // 
             this.menu_UploadPidkey.Name = "menu_UploadPidkey";
-            this.menu_UploadPidkey.Size = new System.Drawing.Size(209, 26);
+            this.menu_UploadPidkey.Size = new System.Drawing.Size(166, 22);
             this.menu_UploadPidkey.Text = "Upload pidkey";
             this.menu_UploadPidkey.Click += new System.EventHandler(this.menu_UploadPidkey_Click);
             // 
             // menu_DownloadPidkey
             // 
             this.menu_DownloadPidkey.Name = "menu_DownloadPidkey";
-            this.menu_DownloadPidkey.Size = new System.Drawing.Size(209, 26);
+            this.menu_DownloadPidkey.Size = new System.Drawing.Size(166, 22);
             this.menu_DownloadPidkey.Text = "Download pidkey";
             this.menu_DownloadPidkey.Click += new System.EventHandler(this.menu_DownloadPidkey_Click);
             // 
@@ -338,10 +339,9 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(1069, 5);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(802, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 16);
+            this.label1.Size = new System.Drawing.Size(36, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Timer:";
             // 
@@ -350,19 +350,17 @@
             this.lb_Timer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_Timer.AutoSize = true;
             this.lb_Timer.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lb_Timer.Location = new System.Drawing.Point(1116, 5);
-            this.lb_Timer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_Timer.Location = new System.Drawing.Point(837, 4);
             this.lb_Timer.Name = "lb_Timer";
-            this.lb_Timer.Size = new System.Drawing.Size(79, 16);
+            this.lb_Timer.Size = new System.Drawing.Size(70, 13);
             this.lb_Timer.TabIndex = 0;
             this.lb_Timer.Text = "00:00:00:000";
             // 
             // tbx_KeySearch
             // 
-            this.tbx_KeySearch.Location = new System.Drawing.Point(8, 36);
-            this.tbx_KeySearch.Margin = new System.Windows.Forms.Padding(4);
+            this.tbx_KeySearch.Location = new System.Drawing.Point(6, 29);
             this.tbx_KeySearch.Name = "tbx_KeySearch";
-            this.tbx_KeySearch.Size = new System.Drawing.Size(415, 22);
+            this.tbx_KeySearch.Size = new System.Drawing.Size(312, 20);
             this.tbx_KeySearch.TabIndex = 4;
             this.tbx_KeySearch.Click += new System.EventHandler(this.tbx_KeySearch_Click);
             // 
@@ -372,10 +370,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbb_Description.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbb_Description.FormattingEnabled = true;
-            this.cbb_Description.Location = new System.Drawing.Point(693, 34);
-            this.cbb_Description.Margin = new System.Windows.Forms.Padding(4);
+            this.cbb_Description.Location = new System.Drawing.Point(520, 28);
             this.cbb_Description.Name = "cbb_Description";
-            this.cbb_Description.Size = new System.Drawing.Size(524, 24);
+            this.cbb_Description.Size = new System.Drawing.Size(394, 21);
             this.cbb_Description.TabIndex = 2;
             this.cbb_Description.SelectedIndexChanged += new System.EventHandler(this.cbb_Description_SelectedIndexChanged);
             // 
@@ -383,10 +380,9 @@
             // 
             this.btn_Refresh.BackgroundImage = global::SupportActivate.Properties.Resources.refresh_480px;
             this.btn_Refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Refresh.Location = new System.Drawing.Point(589, 34);
-            this.btn_Refresh.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Refresh.Location = new System.Drawing.Point(442, 28);
             this.btn_Refresh.Name = "btn_Refresh";
-            this.btn_Refresh.Size = new System.Drawing.Size(31, 28);
+            this.btn_Refresh.Size = new System.Drawing.Size(23, 23);
             this.btn_Refresh.TabIndex = 9;
             this.btn_Refresh.UseVisualStyleBackColor = true;
             this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
@@ -395,10 +391,9 @@
             // 
             this.btn_DeleteKey.BackgroundImage = global::SupportActivate.Properties.Resources.delete_trash_500px;
             this.btn_DeleteKey.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_DeleteKey.Location = new System.Drawing.Point(549, 33);
-            this.btn_DeleteKey.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_DeleteKey.Location = new System.Drawing.Point(412, 27);
             this.btn_DeleteKey.Name = "btn_DeleteKey";
-            this.btn_DeleteKey.Size = new System.Drawing.Size(31, 28);
+            this.btn_DeleteKey.Size = new System.Drawing.Size(23, 23);
             this.btn_DeleteKey.TabIndex = 8;
             this.btn_DeleteKey.UseVisualStyleBackColor = true;
             this.btn_DeleteKey.Click += new System.EventHandler(this.btn_DeleteKey_Click);
@@ -407,10 +402,9 @@
             // 
             this.btn_KeyBlock.BackgroundImage = global::SupportActivate.Properties.Resources.unavailable_500px;
             this.btn_KeyBlock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_KeyBlock.Location = new System.Drawing.Point(511, 33);
-            this.btn_KeyBlock.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_KeyBlock.Location = new System.Drawing.Point(383, 27);
             this.btn_KeyBlock.Name = "btn_KeyBlock";
-            this.btn_KeyBlock.Size = new System.Drawing.Size(31, 28);
+            this.btn_KeyBlock.Size = new System.Drawing.Size(23, 23);
             this.btn_KeyBlock.TabIndex = 7;
             this.btn_KeyBlock.UseVisualStyleBackColor = true;
             this.btn_KeyBlock.Click += new System.EventHandler(this.btn_KeyBlock_Click);
@@ -419,10 +413,9 @@
             // 
             this.btn_Copy.BackgroundImage = global::SupportActivate.Properties.Resources.copy_500px;
             this.btn_Copy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Copy.Location = new System.Drawing.Point(472, 33);
-            this.btn_Copy.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Copy.Location = new System.Drawing.Point(354, 27);
             this.btn_Copy.Name = "btn_Copy";
-            this.btn_Copy.Size = new System.Drawing.Size(31, 28);
+            this.btn_Copy.Size = new System.Drawing.Size(23, 23);
             this.btn_Copy.TabIndex = 6;
             this.btn_Copy.UseVisualStyleBackColor = true;
             this.btn_Copy.Click += new System.EventHandler(this.btn_Copy_Click);
@@ -431,10 +424,9 @@
             // 
             this.btn_Search.BackgroundImage = global::SupportActivate.Properties.Resources.search_480px;
             this.btn_Search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Search.Location = new System.Drawing.Point(432, 33);
-            this.btn_Search.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Search.Location = new System.Drawing.Point(324, 27);
             this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(31, 28);
+            this.btn_Search.Size = new System.Drawing.Size(23, 23);
             this.btn_Search.TabIndex = 5;
             this.btn_Search.UseVisualStyleBackColor = true;
             this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
@@ -462,18 +454,15 @@
             this.Getweb,
             this.Note});
             this.dgv_Key.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            this.dgv_Key.Location = new System.Drawing.Point(0, 65);
-            this.dgv_Key.Margin = new System.Windows.Forms.Padding(4);
+            this.dgv_Key.Location = new System.Drawing.Point(0, 53);
             this.dgv_Key.Name = "dgv_Key";
             this.dgv_Key.RowHeadersVisible = false;
             this.dgv_Key.RowHeadersWidth = 51;
             this.dgv_Key.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgv_Key.Size = new System.Drawing.Size(1225, 487);
+            this.dgv_Key.Size = new System.Drawing.Size(919, 396);
             this.dgv_Key.TabIndex = 3;
-            this.dgv_Key.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Key_CellClick);
             this.dgv_Key.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_Key_CellMouseDown);
             this.dgv_Key.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Key_CellValueChanged);
-            this.dgv_Key.SelectionChanged += new System.EventHandler(this.dgv_Key_SelectionChanged);
             this.dgv_Key.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_Key_KeyDown);
             // 
             // STT
@@ -562,13 +551,13 @@
             this.contextMenu_ChangeTheSelectedKeyToKeyBlock,
             this.contextMenu_RecoveryTheSelectedKey});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(463, 184);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(382, 170);
             // 
             // contextMenu_CopyTheSelectedKey
             // 
             this.contextMenu_CopyTheSelectedKey.Enabled = false;
             this.contextMenu_CopyTheSelectedKey.Name = "contextMenu_CopyTheSelectedKey";
-            this.contextMenu_CopyTheSelectedKey.Size = new System.Drawing.Size(462, 24);
+            this.contextMenu_CopyTheSelectedKey.Size = new System.Drawing.Size(381, 22);
             this.contextMenu_CopyTheSelectedKey.Text = "Copy the selected key                                             Ctrl+C";
             this.contextMenu_CopyTheSelectedKey.Click += new System.EventHandler(this.contextMenu_CopyTheSelectedKey_Click);
             // 
@@ -576,20 +565,20 @@
             // 
             this.contextMenu_CopyTheSelectedKeyAndTheirInformation.Enabled = false;
             this.contextMenu_CopyTheSelectedKeyAndTheirInformation.Name = "contextMenu_CopyTheSelectedKeyAndTheirInformation";
-            this.contextMenu_CopyTheSelectedKeyAndTheirInformation.Size = new System.Drawing.Size(462, 24);
+            this.contextMenu_CopyTheSelectedKeyAndTheirInformation.Size = new System.Drawing.Size(381, 22);
             this.contextMenu_CopyTheSelectedKeyAndTheirInformation.Text = "Copy the selected key and their information      Ctrl+Alt+C";
             this.contextMenu_CopyTheSelectedKeyAndTheirInformation.Click += new System.EventHandler(this.contextMenu_CopyTheSelectedKeyAndTheirInformation_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(459, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(378, 6);
             // 
             // contextMenu_RecheckTheSelectedKey
             // 
             this.contextMenu_RecheckTheSelectedKey.Enabled = false;
             this.contextMenu_RecheckTheSelectedKey.Name = "contextMenu_RecheckTheSelectedKey";
-            this.contextMenu_RecheckTheSelectedKey.Size = new System.Drawing.Size(462, 24);
+            this.contextMenu_RecheckTheSelectedKey.Size = new System.Drawing.Size(381, 22);
             this.contextMenu_RecheckTheSelectedKey.Text = "Recheck the selected key";
             this.contextMenu_RecheckTheSelectedKey.Click += new System.EventHandler(this.contextMenu_RecheckTheSelectedKey_Click);
             // 
@@ -597,20 +586,20 @@
             // 
             this.contextMenu_RecheckInformationTheSelectedKey.Enabled = false;
             this.contextMenu_RecheckInformationTheSelectedKey.Name = "contextMenu_RecheckInformationTheSelectedKey";
-            this.contextMenu_RecheckInformationTheSelectedKey.Size = new System.Drawing.Size(462, 24);
+            this.contextMenu_RecheckInformationTheSelectedKey.Size = new System.Drawing.Size(381, 22);
             this.contextMenu_RecheckInformationTheSelectedKey.Text = "Recheck information the selected key";
             this.contextMenu_RecheckInformationTheSelectedKey.Click += new System.EventHandler(this.contextMenu_RecheckInformationTheSelectedKey_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(459, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(378, 6);
             // 
             // contextMenu_DeleteTheSelectedKey
             // 
             this.contextMenu_DeleteTheSelectedKey.Enabled = false;
             this.contextMenu_DeleteTheSelectedKey.Name = "contextMenu_DeleteTheSelectedKey";
-            this.contextMenu_DeleteTheSelectedKey.Size = new System.Drawing.Size(462, 24);
+            this.contextMenu_DeleteTheSelectedKey.Size = new System.Drawing.Size(381, 22);
             this.contextMenu_DeleteTheSelectedKey.Text = "Delete the selected key                                           Del";
             this.contextMenu_DeleteTheSelectedKey.Click += new System.EventHandler(this.contextMenu_DeleteTheSelectedKey_Click);
             // 
@@ -618,7 +607,7 @@
             // 
             this.contextMenu_ChangeTheSelectedKeyToKeyBlock.Enabled = false;
             this.contextMenu_ChangeTheSelectedKeyToKeyBlock.Name = "contextMenu_ChangeTheSelectedKeyToKeyBlock";
-            this.contextMenu_ChangeTheSelectedKeyToKeyBlock.Size = new System.Drawing.Size(462, 24);
+            this.contextMenu_ChangeTheSelectedKeyToKeyBlock.Size = new System.Drawing.Size(381, 22);
             this.contextMenu_ChangeTheSelectedKeyToKeyBlock.Text = "Change the selected key to KeyBlock                   Shift+Del";
             this.contextMenu_ChangeTheSelectedKeyToKeyBlock.Click += new System.EventHandler(this.contextMenu_ChangeTheSelectedKeyToKeyBlock_Click);
             // 
@@ -626,7 +615,7 @@
             // 
             this.contextMenu_RecoveryTheSelectedKey.Enabled = false;
             this.contextMenu_RecoveryTheSelectedKey.Name = "contextMenu_RecoveryTheSelectedKey";
-            this.contextMenu_RecoveryTheSelectedKey.Size = new System.Drawing.Size(462, 24);
+            this.contextMenu_RecoveryTheSelectedKey.Size = new System.Drawing.Size(381, 22);
             this.contextMenu_RecoveryTheSelectedKey.Text = "Recovery the selected key";
             this.contextMenu_RecoveryTheSelectedKey.Click += new System.EventHandler(this.contextMenu_RecoveryTheSelectedKey_Click);
             // 
@@ -636,9 +625,9 @@
             // 
             // DataKey
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1225, 554);
+            this.ClientSize = new System.Drawing.Size(919, 450);
             this.Controls.Add(this.dgv_Key);
             this.Controls.Add(this.btn_Refresh);
             this.Controls.Add(this.btn_DeleteKey);
@@ -652,7 +641,6 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DataKey";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DataKey";

@@ -10,9 +10,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Tran Van Thang")]
 [assembly: AssemblyProduct("Support Activate v.3.6.1 x64")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2019")]
+[assembly: AssemblyCopyright("Copyright ©  2024")]
 [assembly: AssemblyTrademark("")]
-[assembly: log4net.Config.XmlConfigurator(ConfigFile = "config/Log4Net.Config.xml", Watch = true)]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -21,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("9e52976c-77db-4799-87b3-468d5c5a222d")]
+[assembly: Guid("54c514f9-6809-47b7-8a24-48d5618f1f7b")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -33,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.6.1.1")]
-[assembly: AssemblyFileVersion("3.6.1.1")]
+[assembly: AssemblyVersion("3.6.2.0")]
+[assembly: AssemblyFileVersion("3.6.2.0")]

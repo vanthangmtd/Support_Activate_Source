@@ -1,7 +1,6 @@
 ﻿using SupportActivate.Common;
 using SupportActivate.ProcessTabControl;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -18,7 +17,7 @@ namespace SupportActivate.FormWindows
         public string BoxDescription;
         public string optionVerKey;
         public string selectVerKey, keySearch;
-        public List<dataKey> listKey = new List<dataKey>();
+        //public List<dataKey> listKey = new List<dataKey>();
         public string optionKey, optionCbx;
         public DateTime dateTimeCheckKey;
         private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(DataKey));
@@ -67,105 +66,51 @@ namespace SupportActivate.FormWindows
             { IsBackground = true }.Start();
         }
 
-        private void dgv_Key_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            listKey.Clear();
-            bool recoverKey = false;
-            var rowIndexes = dgv_Key.SelectedCells.Cast<DataGridViewCell>().Where(x => x.RowIndex == e.RowIndex)
-                                  .Select(cell => cell.RowIndex)
-                                  .ToList();
-            if (rowIndexes.Count() > 0)
-            {
-                int i = 0;
-                foreach (DataGridViewCell row in dgv_Key.SelectedCells)
-                {
-                    var selectedRow = row.RowIndex;
-                    listKey.Add(new dataKey() { id = i, key = dgv_Key[1, selectedRow].Value.ToString() });
-                    recoverKey = dgv_Key[5, selectedRow].Value.ToString() == Constant.KeyBlock ? true :
-                                 dgv_Key[6, selectedRow].Value.ToString() == Constant.KeyRetaiBlock ? true : false;
-                    i += 1;
-                }
-                listKey = listKey.OrderByDescending(x => x.id).ToList();
-            }
-            contextMenuStrip1.Enabled = true;
-            contextMenu_CopyTheSelectedKey.Enabled = true;
-            contextMenu_CopyTheSelectedKeyAndTheirInformation.Enabled = true;
-            contextMenu_RecheckTheSelectedKey.Enabled = true;
-            contextMenu_RecheckInformationTheSelectedKey.Enabled = true;
-            contextMenu_DeleteTheSelectedKey.Enabled = true;
-            if (recoverKey == true)
-            {
-                contextMenu_RecoveryTheSelectedKey.Enabled = true;
-                menu_RecoveryTheSelectedKey.Enabled = true;
-            }
-            else
-            {
-                contextMenu_RecoveryTheSelectedKey.Enabled = false;
-                menu_RecoveryTheSelectedKey.Enabled = false;
-            }
-            contextMenu_ChangeTheSelectedKeyToKeyBlock.Enabled = true;
-            menu_RecheckTheSelectedKey.Enabled = true;
-            menu_RecheckInformationTheSelectedKey.Enabled = true;
-            menu_ChangeTheSelectedKeyToKeyblock.Enabled = true;
-            menu_CopyTheSelectedKey.Enabled = true;
-            menu_CopyTheSelectedKeyAndTheirInformation.Enabled = true;
-            menu_DeleteTheSelectedKey.Enabled = true;
-            btn_Copy.Enabled = true;
-            btn_DeleteKey.Enabled = true;
-        }
-
         private void dgv_Key_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             var rowIndexes = dgv_Key.SelectedCells.Cast<DataGridViewCell>().Where(x => x.RowIndex == e.RowIndex)
                                   .Select(cell => cell.RowIndex)
                                   .ToList();
             if (e.Button == MouseButtons.Right & rowIndexes.Count() > 0)
+            {
+                bool recoverKey = false;
+                DataGridViewSelectedCellCollection selectedCells = formDataKey.dgv_Key.SelectedCells;
+                foreach (DataGridViewCell row in selectedCells)
+                {
+                    var selectedRow = row.RowIndex;
+                    recoverKey = dgv_Key[5, selectedRow].Value.ToString() == "-2" ? true :
+                                 dgv_Key[6, selectedRow].Value.ToString() == ContantResource.KeyRetaiBlock ? true : false;
+                }
+
+                contextMenuStrip1.Enabled = true;
+                contextMenu_CopyTheSelectedKey.Enabled = true;
+                contextMenu_CopyTheSelectedKeyAndTheirInformation.Enabled = true;
+                contextMenu_RecheckTheSelectedKey.Enabled = true;
+                contextMenu_RecheckInformationTheSelectedKey.Enabled = true;
+                contextMenu_DeleteTheSelectedKey.Enabled = true;
+                if (recoverKey == true)
+                {
+                    contextMenu_RecoveryTheSelectedKey.Enabled = true;
+                    menu_RecoveryTheSelectedKey.Enabled = true;
+                }
+                else
+                {
+                    contextMenu_RecoveryTheSelectedKey.Enabled = false;
+                    menu_RecoveryTheSelectedKey.Enabled = false;
+                }
+                contextMenu_ChangeTheSelectedKeyToKeyBlock.Enabled = true;
+                menu_RecheckTheSelectedKey.Enabled = true;
+                menu_RecheckInformationTheSelectedKey.Enabled = true;
+                menu_ChangeTheSelectedKeyToKeyblock.Enabled = true;
+                menu_CopyTheSelectedKey.Enabled = true;
+                menu_CopyTheSelectedKeyAndTheirInformation.Enabled = true;
+                menu_DeleteTheSelectedKey.Enabled = true;
+                btn_Copy.Enabled = true;
+                btn_DeleteKey.Enabled = true;
                 contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
+            }
         }
 
-        private void dgv_Key_SelectionChanged(object sender, EventArgs e)
-        {
-            listKey.Clear();
-            bool recoverKey = false;
-            if (dgv_Key.SelectedRows.Count == 0)
-                return;
-            //dgv_Key.FirstDisplayedScrollingRowIndex = dgv_Key.SelectedRows[0].Index;
-            int i = 0;
-            foreach (DataGridViewRow row in dgv_Key.SelectedRows)
-            {
-                var selectedRow = row.Index;
-                listKey.Add(new dataKey() { id = i, key = dgv_Key[1, selectedRow].Value.ToString() });
-                recoverKey = dgv_Key[5, selectedRow].Value.ToString() == Constant.KeyBlock ? true :
-                                 dgv_Key[6, selectedRow].Value.ToString() == Constant.KeyRetaiBlock ? true : false;
-            }
-            listKey = listKey.OrderByDescending(x => x.id).ToList();
-
-            contextMenuStrip1.Enabled = true;
-            contextMenu_CopyTheSelectedKey.Enabled = true;
-            contextMenu_CopyTheSelectedKeyAndTheirInformation.Enabled = true;
-            contextMenu_RecheckTheSelectedKey.Enabled = true;
-            contextMenu_RecheckInformationTheSelectedKey.Enabled = true;
-            contextMenu_DeleteTheSelectedKey.Enabled = true;
-            if (recoverKey == true)
-            {
-                contextMenu_RecoveryTheSelectedKey.Enabled = true;
-                menu_RecoveryTheSelectedKey.Enabled = true;
-            }
-            else
-            {
-                contextMenu_RecoveryTheSelectedKey.Enabled = false;
-                menu_RecoveryTheSelectedKey.Enabled = false;
-            }
-            contextMenu_ChangeTheSelectedKeyToKeyBlock.Enabled = true;
-            menu_RecheckTheSelectedKey.Enabled = true;
-            menu_RecheckInformationTheSelectedKey.Enabled = true;
-            menu_ChangeTheSelectedKeyToKeyblock.Enabled = true;
-            menu_CopyTheSelectedKey.Enabled = true;
-            menu_CopyTheSelectedKeyAndTheirInformation.Enabled = true;
-            menu_DeleteTheSelectedKey.Enabled = true;
-            btn_Copy.Enabled = true;
-            btn_DeleteKey.Enabled = true;
-        }
 
         private void dgv_Key_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -180,7 +125,7 @@ namespace SupportActivate.FormWindows
             catch (Exception ex)
             {
                 logger.Error(ex);
-                MessageBox.Show(Messages.AddNoteError, Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(MessagesResource.AddNoteError, MessagesResource.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -204,9 +149,9 @@ namespace SupportActivate.FormWindows
                 case true when e.Control & e.KeyCode == Keys.C:
                     processDataKey.getValuesDgvKey();
                     break;
-                case true when e.Control & e.KeyCode == Keys.A:
+                /*case true when e.Control & e.KeyCode == Keys.A:
                     processDataKey.selectAllDgvKey();
-                    break;
+                    break;*/
                 case true when e.Shift & e.KeyCode == Keys.Delete:
                     new Thread(() => { processDataKey.changeToKeyBlock(); }) { IsBackground = true }.Start();
                     break;
@@ -270,14 +215,14 @@ namespace SupportActivate.FormWindows
 
         private void contextMenu_ChangeTheSelectedKeyToKeyBlock_Click(object sender, EventArgs e)
         {
-            var ask = MessageBox.Show(Messages.ChangeKeyToKeyBlocked, Messages.success, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var ask = MessageBox.Show(MessagesResource.ChangeKeyToKeyBlocked, MessagesResource.success, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (ask == DialogResult.Yes)
                 new Thread(() => { processDataKey.changeToKeyBlock(); }) { IsBackground = true }.Start();
         }
 
         private void contextMenu_RecoveryTheSelectedKey_Click(object sender, EventArgs e)
         {
-            var ask = MessageBox.Show(Messages.RecoverKey, Messages.success, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var ask = MessageBox.Show(MessagesResource.RecoverKey, MessagesResource.success, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (ask == DialogResult.Yes)
                 new Thread(() => { processDataKey.recoveryKeyBlock(); }) { IsBackground = true }.Start();
         }
@@ -295,7 +240,7 @@ namespace SupportActivate.FormWindows
 
         private void menu_BackupDatabase_Click(object sender, EventArgs e)
         {
-            string part = Application.StartupPath + @"\pkeyconfig\data.db";
+            string part = Application.StartupPath + @"\pkeyconfig\data_new.db";
             if (File.Exists(part) == true)
             {
                 using (SaveFileDialog SaveFileDialog1 = new SaveFileDialog())
@@ -305,7 +250,7 @@ namespace SupportActivate.FormWindows
                     {
                         string file = SaveFileDialog1.FileName;
                         File.Copy(part, file, true);
-                        MessageBox.Show("Backup success", Messages.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Backup success", MessagesResource.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -320,7 +265,7 @@ namespace SupportActivate.FormWindows
                 if (dialog.ShowDialog() != DialogResult.OK)
                     return;
                 fileName = dialog.FileName;
-                var ask = MessageBox.Show("Do you want to restore databse?", Messages.success, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var ask = MessageBox.Show("Do you want to restore databse?", MessagesResource.success, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (ask == DialogResult.Yes)
                 {
                     new Thread(() => { processDataKey.readDatabaseBK(fileName); }) { IsBackground = true }.Start();
@@ -330,7 +275,7 @@ namespace SupportActivate.FormWindows
 
         private void menu_AddDatabase_Click(object sender, EventArgs e)
         {
-            var ask = MessageBox.Show("The application can only read the database of PIDKey Lite!\r\nDo you want to add a product key?", Messages.success, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var ask = MessageBox.Show("The application can only read the database of PIDKey Lite!\r\nDo you want to add a product key?", MessagesResource.success, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (ask == DialogResult.Yes)
             {
                 string fileName = string.Empty;
@@ -403,7 +348,7 @@ namespace SupportActivate.FormWindows
 
         private void menu_RefreshDatabase_Click(object sender, EventArgs e)
         {
-            var ask = MessageBox.Show("Do you want to refresh database?", Messages.success, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var ask = MessageBox.Show("Do you want to refresh database?", MessagesResource.success, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (ask == DialogResult.Yes)
             {
                 new Thread(() => { processDataKey.refreshDatabase(); }) { IsBackground = true }.Start();
@@ -463,7 +408,7 @@ namespace SupportActivate.FormWindows
 
         private void btn_DeleteKey_Click(object sender, EventArgs e)
         {
-            var ask = MessageBox.Show(Messages.DeleteKey, Messages.success, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var ask = MessageBox.Show(MessagesResource.DeleteKey, MessagesResource.success, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (ask == DialogResult.Yes)
                 new Thread(() => { processDataKey.deleteDgvKey(); }) { IsBackground = true }.Start();
         }

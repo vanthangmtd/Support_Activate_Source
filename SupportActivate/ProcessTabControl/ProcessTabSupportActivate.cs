@@ -183,7 +183,7 @@ namespace SupportActivate.ProcessTabControl
             {
                 string tokenGetcid = Regex.Replace(formMain.tbx_TokenActivate.Text.ToLower(), "[^a-z0-9]", "");
                 if (string.IsNullOrEmpty(tokenGetcid))
-                    MessageBox.Show(Messages.TokenApiCannotEmpty, Messages.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(MessagesResource.TokenApiCannotEmpty, MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else
                 {
                     formMain.btn_OKActivate.Enabled = true;
@@ -202,7 +202,7 @@ namespace SupportActivate.ProcessTabControl
                     string keyAPIFile = Regex.Replace(serverSetting.GetKEYAPI().ToLower(), "[^a-z0-9]", "");
                     if (keyAPIFile != tokenGetcid && tokenGetcid.Length >= 6)
                     {
-                        var result = MessageBox.Show(Messages.UpdateTokenGetcid, Messages.warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        var result = MessageBox.Show(MessagesResource.UpdateTokenGetcid, MessagesResource.warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
                             serverSetting.UpdateKEYAPI(Regex.Replace(tokenGetcid.ToLower(), "[^a-z0-9]", ""));
                     }
@@ -258,7 +258,7 @@ namespace SupportActivate.ProcessTabControl
             string tokenGetcid = Regex.Replace(formMain.tbx_TokenGetcid.Text.ToLower(), "[^a-z0-9]", "");
             if (string.IsNullOrEmpty(tokenGetcid))
             {
-                MessageBox.Show(Messages.TokenApiCannotEmpty, Messages.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(MessagesResource.TokenApiCannotEmpty, MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -266,7 +266,7 @@ namespace SupportActivate.ProcessTabControl
             dateTimeGetCID = DateTime.Now;
             if (tokenGetcid.Length >= 6 && tokenGetcid != serverSetting.GetKEYAPI())
             {
-                var result = MessageBox.Show(Messages.UpdateTokenGetcid, Messages.warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show(MessagesResource.UpdateTokenGetcid, MessagesResource.warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                     serverSetting.UpdateKEYAPI(Regex.Replace(tokenGetcid.ToLower(), "[^a-z0-9]", ""));
             }
@@ -341,13 +341,13 @@ namespace SupportActivate.ProcessTabControl
             {
                 formMain.btn_OKGetcid.Enabled = false;
                 formMain.cbb_VersionGetcid.SelectedIndex = 0;
-                MessageBox.Show(Messages.NoCID, Messages.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(MessagesResource.NoCID, MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (!validate.ValidateCID(cid))
             {
                 formMain.btn_OKGetcid.Enabled = false;
                 formMain.cbb_VersionGetcid.SelectedIndex = 0;
-                MessageBox.Show(Messages.CIDWrong, Messages.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(MessagesResource.CIDWrong, MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (optionCbx == setting.optionSelect)
                 formMain.btn_OKGetcid.Enabled = false;
@@ -381,7 +381,7 @@ namespace SupportActivate.ProcessTabControl
             {
                 formMain.btn_OKGetcid.Enabled = false;
                 formMain.cbb_VersionGetcid.SelectedIndex = 0;
-                MessageBox.Show(Messages.CIDWrong, Messages.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(MessagesResource.CIDWrong, MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (optionCbx == setting.optionSelect)
                 formMain.btn_OKGetcid.Enabled = false;
@@ -446,7 +446,7 @@ namespace SupportActivate.ProcessTabControl
             formMain.tbx_Log.PasswordChar = '\u0000';
             string optionCbx = formMain.cbb_VersionCheckRemoveLincense.Text;
             if (optionCbx == "Check/Remove")
-                MessageBox.Show(Messages.NoSelectCommand, Messages.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(MessagesResource.NoSelectCommand, MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
                 var optionCbxCheckRemove = sourceData.OptionCbxCheckRemove();

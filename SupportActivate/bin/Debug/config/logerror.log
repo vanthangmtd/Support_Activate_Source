@@ -1,6 +1,0 @@
-2022-03-21 09:23:40,645 | ERROR | System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
-   at System.Net.HttpWebRequest.GetResponse()
-   at SupportActivate.FormWindows.Up_syn_pidkey.upload_syn(String data) in D:\Source_code\Support_Activate_Source\SupportActivate\FormWindows\Up_syn_pidkey.cs:line 195 
-2022-03-21 09:25:57,691 | ERROR | System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
-   at System.Net.HttpWebRequest.GetResponse()
-   at SupportActivate.FormWindows.Up_syn_pidkey.upload_syn(String data) in D:\Source_code\Support_Activate_Source\SupportActivate\FormWindows\Up_syn_pidkey.cs:line 195 

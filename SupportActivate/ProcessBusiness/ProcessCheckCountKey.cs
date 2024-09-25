@@ -137,7 +137,7 @@ namespace SupportActivate.ProcessBusiness
             {
                 if (soapResponse == null)
                 {
-                    return Constant.serverBusy;
+                    return ContantResource.serverBusy;
                     //throw new ArgumentNullException("The remote server returned an unexpected response.");
                 }
 
@@ -146,12 +146,12 @@ namespace SupportActivate.ProcessBusiness
                 if (responseXml.Descendants(BatchActivationResponseNs + "ErrorCode").Any())
                 {
                     string errorCode = responseXml.Descendants(BatchActivationResponseNs + "ErrorCode").First().Value;
-                    if (errorCode == "0x7F") return Constant.Need_to_call;
-                    else if (errorCode == "0x67") return Constant.KeyBlock;
-                    else if (errorCode == "0x8D") return Constant.Exceeded_IID;
-                    else if (errorCode == "0x90") return Constant.Wrong_IID;
-                    else if (errorCode == "0x68") return Constant.Not_legimate_key;
-                    else if (errorCode == "0xD5" || errorCode == "0xD6") return Constant.Blocked_IID;
+                    if (errorCode == "0x7F") return ContantResource.Need_to_call;
+                    else if (errorCode == "0x67") return ContantResource.KeyBlock;
+                    else if (errorCode == "0x8D") return ContantResource.Exceeded_IID;
+                    else if (errorCode == "0x90") return ContantResource.Wrong_IID;
+                    else if (errorCode == "0x68") return ContantResource.Not_legimate_key;
+                    else if (errorCode == "0xD5" || errorCode == "0xD6") return ContantResource.Blocked_IID;
                     else if (errorCode == "0x86") return "-1";
                     else if (errorCode == "0x71" || errorCode == "0x8E") return "0x71";
                     else if (errorCode == "0xC004C017" || errorCode == "0x80131509") return "0xC004C017";
@@ -172,14 +172,14 @@ namespace SupportActivate.ProcessBusiness
                 }
                 else
                 {
-                    return Constant.error;
+                    return ContantResource.error;
                     //throw new Exception("The remote server returned an unrecognized response.");
                 }
 
             }
             catch
             {
-                return Constant.error;
+                return ContantResource.error;
             }
         }
     }

@@ -179,7 +179,7 @@ namespace SupportActivate.ProcessTabControl
         public void btn_FileFilter_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(formMain.tbx_KeyInput1.Text) && !string.IsNullOrEmpty(formMain.tbx_KeyInput2.Text))
-                MessageBox.Show(Messages.DeleteSourceKey1Or2, Messages.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(MessagesResource.DeleteSourceKey1Or2, MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
                 string fileNameSame = string.Empty;
@@ -209,7 +209,7 @@ namespace SupportActivate.ProcessTabControl
         public void btn_SaveFilter_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(formMain.tbx_KeyOutput1.Text.Trim().Replace(" ", "")) && string.IsNullOrEmpty(formMain.tbx_KeyOutput2.Text.Trim().Replace(" ", "")) && string.IsNullOrEmpty(formMain.tbx_KeyOutput3.Text.Trim().Replace(" ", "")))
-                MessageBox.Show(Messages.NotSoft, Messages.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(MessagesResource.NotSoft, MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
                 string data = "Key Same\r\n\r\n" + formMain.tbx_KeyOutput1.Text + "\r\nKey Different 1\r\n\r\n" + formMain.tbx_KeyOutput2.Text + "\r\nKey Different 2\r\n\r\n" + formMain.tbx_KeyOutput3.Text;
@@ -220,7 +220,7 @@ namespace SupportActivate.ProcessTabControl
                         using (StreamWriter sw = File.AppendText(SaveFileDialog1.FileName))
                         {
                             sw.WriteLine(data);
-                            MessageBox.Show(Messages.SaveSuccess, Messages.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show(MessagesResource.SaveSuccess, MessagesResource.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                 }
             }

@@ -65,11 +65,11 @@ namespace SupportActivate.ProcessBusiness
             else
             {
                 pid.Key = key;
-                pid.Description = Constant.Unsupported_PKeyConfig_InvalidKey;
+                pid.Description = ContantResource.Unsupported_PKeyConfig_InvalidKey;
                 pid.SubType = string.Empty;
                 pid.LicenseType = string.Empty;
                 pid.ErrorCode = string.Empty;
-                pid.MAKCount = string.Empty;
+                pid.MAKCount = 0;
                 pid.KeyGetWeb = string.Empty;
                 lock (objLockInstall)
                     globalPIDKey.serverKey.CreateDataKey(saveKey, pid, string.Empty);
@@ -101,14 +101,14 @@ namespace SupportActivate.ProcessBusiness
                     pid.SubType = inforPidkey.st;
                     pid.LicenseType = inforPidkey.lit;
                     pid.MAKCount = inforPidkey.count;
-                    if (inforPidkey.count == Constant.KeyBlock)
+                    if (inforPidkey.count == -2)
                     {
-                        pid.ErrorCode = Constant.KeyRetaiBlock;
+                        pid.ErrorCode = ContantResource.KeyRetaiBlock;
                         pid.KeyGetWeb = string.Empty;
                         lock (objLockInstall)
                             globalPIDKey.serverKey.CreateDataKey(saveKey, pid, string.Empty);
                     }
-                    else if (inforPidkey.lit == Constant.Retail)
+                    else if (inforPidkey.lit == ContantResource.Retail)
                     {
                         lock (objLockInstall)
                         {
@@ -117,12 +117,12 @@ namespace SupportActivate.ProcessBusiness
                             globalPIDKey.serverKey.CreateDataKey(saveKey, pid, string.Empty);
                         }
                     }
-                    else if (inforPidkey.count == "0" || inforPidkey.count == "-1")
+                    else if (inforPidkey.count == 0 || inforPidkey.count == -1)
                     {
                         lock (objLockInstall)
                         {
                             pid.ErrorCode = checkOffice > -1 ? globalPIDKey.CheckKey2010Retail(key) : globalPIDKey.CheckKeyRetail(key);
-                            if (inforPidkey.count == "0")
+                            if (inforPidkey.count == 0)
                                 pid.KeyGetWeb = globalPIDKey.GetIID(key);
                             globalPIDKey.serverKey.CreateDataKey(saveKey, pid, string.Empty);
                         }
@@ -139,11 +139,11 @@ namespace SupportActivate.ProcessBusiness
                 else
                 {
                     pid.Key = key;
-                    pid.Description = Constant.Unsupported_PKeyConfig_InvalidKey;
+                    pid.Description = ContantResource.Unsupported_PKeyConfig_InvalidKey;
                     pid.SubType = string.Empty;
                     pid.LicenseType = string.Empty;
                     pid.ErrorCode = string.Empty;
-                    pid.MAKCount = string.Empty;
+                    pid.MAKCount = 0;
                     pid.KeyGetWeb = string.Empty;
                     lock (objLockInstall)
                         globalPIDKey.serverKey.CreateDataKey(saveKey, pid, string.Empty);
@@ -288,7 +288,7 @@ namespace SupportActivate.ProcessBusiness
             catch (Exception ex)
             {
                 logger.Error(ex);
-                MessageBox.Show(Messages.CannotDisabledService, Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(MessagesResource.CannotDisabledService, MessagesResource.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -343,16 +343,16 @@ namespace SupportActivate.ProcessBusiness
         private string CheckErrorcode(string code)
         {
             string maLoi;
-            if (code == Constant.KeyRetai4C008)
-                maLoi = Constant.KeyRetai4C008;
+            if (code == ContantResource.KeyRetai4C008)
+                maLoi = ContantResource.KeyRetai4C008;
             else if (code == "0xC004C020")
                 maLoi = "0xC004C020";
             else if (code == "0xC004C770" || code == "0xC004FC03" || code == "0x803FA071")
                 maLoi = "By phone";
             else if (code == "0xC004C060" || code == "0xC004C003" || code == "0xC004C004" || code == "0xC004C4A2" || code == "0xC004F004" || code == "0xC004C007")
-                maLoi = Constant.KeyRetaiBlock;
+                maLoi = ContantResource.KeyRetaiBlock;
             else if (code == "0xC004F005" || code == "0xC004C00F" || code == "0xC004B001" || code == "0x803FA067L" || code == "0xC004F061" || code == "0xC004C001")
-                maLoi = Constant.KeyRetaiBlock;
+                maLoi = ContantResource.KeyRetaiBlock;
             else
                 maLoi = code;
             return maLoi;
@@ -383,7 +383,7 @@ namespace SupportActivate.ProcessBusiness
                     try
                     {
                         wmi.InvokeMethod("Activate", null/* TODO Change to default(_) if this is not a reference type */);
-                        errorcode = Constant.Online;
+                        errorcode = ContantResource.Online;
                     }
                     catch (COMException ex)
                     {
@@ -426,7 +426,7 @@ namespace SupportActivate.ProcessBusiness
                     try
                     {
                         wmi.InvokeMethod("Activate", null/* TODO Change to default(_) if this is not a reference type */);
-                        errorcode = Constant.Online;
+                        errorcode = ContantResource.Online;
                     }
                     catch (COMException ex)
                     {
@@ -458,10 +458,10 @@ namespace SupportActivate.ProcessBusiness
                 cid = processGetcid.GetConfirmationID(iid, serverSetting.GetKEYAPI());
                 if (validate.ValidateCID(cid))
                     getWeb = "Get Web";
-                else if (cid == Constant.Need_to_call)
+                else if (cid == ContantResource.Need_to_call)
                     getWeb = "Call";
-                else if (cid == Constant.Blocked_IID)
-                    getWeb = Constant.KeyRetaiBlock;
+                else if (cid == ContantResource.Blocked_IID)
+                    getWeb = ContantResource.KeyRetaiBlock;
                 else
                     getWeb = cid;
             }
@@ -478,7 +478,8 @@ namespace SupportActivate.ProcessBusiness
 
         private inforPidkey checkInfo(IntPtr genPID, IntPtr oldPID, IntPtr DPID4, string serial, string[] txtFilesArray)
         {
-            string epid = string.Empty, aid = string.Empty, edi = string.Empty, ds = string.Empty, st = string.Empty, lit = string.Empty, count = string.Empty;
+            string epid = string.Empty, aid = string.Empty, edi = string.Empty, ds = string.Empty, st = string.Empty, lit = string.Empty;
+            int count = -1;
             Encoding enc = Encoding.ASCII;
             bool validKey = false;
             try
@@ -505,12 +506,16 @@ namespace SupportActivate.ProcessBusiness
                         ds = GetProductDescription(abc, "{" + aid + "}", edi);
                         st = enc.GetString(core, 888, 30).Replace(Constants.vbNullChar, ""); // SubType
                         lit = enc.GetString(core, 1016, 25).Replace(Constants.vbNullChar, ""); // License Type
-                        if (lit != Constant.Retail)
+                        if (lit != ContantResource.Retail)
                         {
-                            count = processGetRemainingActivationsOrCID.GetRemainingActivationsOrCID(2, string.Empty, epid);
+                            var resultGetRemainingActivations = processGetRemainingActivationsOrCID.GetRemainingActivationsOrCID(2, string.Empty, epid);
+                            if (resultGetRemainingActivations == ContantResource.KeyBlock)
+                                count = -2;
+                            else
+                                int.TryParse(resultGetRemainingActivations, out count);
                         }
                         else
-                            count = string.Empty;
+                            count = -1;
 
                         validKey = true;
                         break;
@@ -519,7 +524,7 @@ namespace SupportActivate.ProcessBusiness
             }
             catch (Exception ex)
             {
-                ds = Constant.error;
+                ds = ContantResource.error;
                 Console.WriteLine(ex.ToString());
             }
             inforPidkey inforPidkey = new inforPidkey();
@@ -563,7 +568,7 @@ namespace SupportActivate.ProcessBusiness
                             return "Not Found";
                     }
                     else
-                        return "Not Found"; 
+                        return "Not Found";
                 }
             }
             catch

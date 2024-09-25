@@ -8,8 +8,10 @@ using SupportActivate.Setting;
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Security.Principal;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace FormWindows.SupportActivate
@@ -25,7 +27,7 @@ namespace FormWindows.SupportActivate
         ProcessTabSetting processTabSetting;
         ProcessTemp processTemp;
         ConfigSetting setting;
-        public string version = "3.6.1";
+        public string version = "3.6.2";
         public string typeApp = " x64";
         private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(FormSupportActivate));
 
@@ -46,6 +48,24 @@ namespace FormWindows.SupportActivate
         private void SupportActivate_Load(object sender, EventArgs e)
         {
             serverKey.createDataBase();
+            new Thread(() =>
+            {
+                if (File.Exists(ServerKey.fullOldPath))
+                {
+                    btn_DataKey.Invoke(new Action(() =>
+                    {
+                        btn_DataKey.Enabled = false;
+                        btn_DataKey.Text = "Copy...";
+                    }));
+                    serverKey.BackupAndRestoreDBOld();
+                    btn_DataKey.Invoke(new Action(() =>
+                    {
+                        btn_DataKey.Enabled = true;
+                        btn_DataKey.Text = "Data Key";
+                    }));
+                }
+            })
+            { IsBackground = true }.Start();
             serverSetting.CreateDataBase();
 
             Clipboard.GetText();
@@ -98,7 +118,7 @@ namespace FormWindows.SupportActivate
             bool closeApp = serverSetting.GetStatusCLOSEAPP();
             if (closeApp)
             {
-                var ask = MessageBox.Show("Do you want to exit the application?", Messages.success, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var ask = MessageBox.Show("Do you want to exit the application?", MessagesResource.success, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (ask == DialogResult.Yes)
                 {
                     processTemp.DeleteFile();
@@ -177,7 +197,7 @@ namespace FormWindows.SupportActivate
         private void btn_CopyCID_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(tbx_CID.Text))
-                MessageBox.Show(Messages.CIDWrong, Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(MessagesResource.CIDWrong, MessagesResource.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
                 Clipboard.SetText(tbx_CID.Text);
         }

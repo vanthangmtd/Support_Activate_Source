@@ -9,15 +9,18 @@ namespace SupportActivate.ProcessSQL
     public class ServerKey
     {
         private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(ServerSetting));
-        static string location = Application.StartupPath + @"\pkeyconfig";
-        static string fileName = "data.db";
-        static string fullPath = Path.Combine(location, fileName);
+        private static string location = Application.StartupPath + @"\pkeyconfig";
+        private static string fileName = "data_new.db";
+        private static string fullPath = Path.Combine(location, fileName);
         public string connectionString = String.Format("Data Source = {0}; Version=3;", fullPath);
 
-        private const string KeyOffice = "KEYOFFICE";
-        private const string KeyWindows = "KEYWINDOWS";
-        private const string KeyServer = "KEYSERVER";
-        private const string KeyOther = "KEYOTHER";
+        public const string KeyOffice = "KEYOFFICE";
+        public const string KeyWindows = "KEYWINDOWS";
+        public const string KeyServer = "KEYSERVER";
+        public const string KeyOther = "KEYOTHER";
+
+        public static string fullOldPath = Path.Combine(location, "data.db");
+        private string connectionStringOld = String.Format("Data Source = {0}; Version=3;", fullOldPath);
 
         public void createDataBase()
         {
@@ -27,13 +30,13 @@ namespace SupportActivate.ProcessSQL
                 {
                     string createTableCID = "CREATE TABLE 'CID' ('Id' INTEGER PRIMARY KEY AUTOINCREMENT, 'IID' TEXT, 'CID' TEXT);";
                     string createTableKeyOffice = @"CREATE TABLE 'KEYOFFICE' ('Id' INTEGER PRIMARY KEY AUTOINCREMENT, 'Key' TEXT, 'Description' TEXT, 'SubType' TEXT,
-	                                        'LicenseType' TEXT, 'MAKCount' TEXT, 'ErrorCode' TEXT, 'Getweb' TEXT, 'Note' TEXT);";
+	                                        'LicenseType' TEXT, 'MAKCount' INTEGER, 'ErrorCode' TEXT, 'Getweb' TEXT, 'Note' TEXT);";
                     string createTableKeyWindows = @"CREATE TABLE 'KEYWINDOWS' ('Id' INTEGER PRIMARY KEY AUTOINCREMENT, 'Key' TEXT, 'Description' TEXT, 'SubType' TEXT,
-	                                        'LicenseType' TEXT, 'MAKCount' TEXT, 'ErrorCode' TEXT, 'Getweb' TEXT, 'Note' TEXT);";
+	                                        'LicenseType' TEXT, 'MAKCount' INTEGER, 'ErrorCode' TEXT, 'Getweb' TEXT, 'Note' TEXT);";
                     string createTableKeyServer = @"CREATE TABLE 'KEYSERVER' ('Id' INTEGER PRIMARY KEY AUTOINCREMENT, 'Key' TEXT, 'Description' TEXT, 'SubType' TEXT,
-	                                        'LicenseType' TEXT, 'MAKCount' TEXT, 'ErrorCode' TEXT, 'Getweb' TEXT, 'Note' TEXT);";
+	                                        'LicenseType' TEXT, 'MAKCount' INTEGER, 'ErrorCode' TEXT, 'Getweb' TEXT, 'Note' TEXT);";
                     string createTableKeyOther = @"CREATE TABLE 'KEYOTHER' ('Id' INTEGER PRIMARY KEY AUTOINCREMENT, 'Key' TEXT, 'Description' TEXT, 'SubType' TEXT,
-	                                        'LicenseType' TEXT, 'MAKCount' TEXT, 'ErrorCode' TEXT, 'Getweb' TEXT, 'Note' TEXT);";
+	                                        'LicenseType' TEXT, 'MAKCount' INTEGER, 'ErrorCode' TEXT, 'Getweb' TEXT, 'Note' TEXT);";
                     using (SQLiteConnection SqlConn = new SQLiteConnection(connectionString))
                     {
                         SQLiteCommand cmdCreateTableCID = new SQLiteCommand(createTableCID, SqlConn);
@@ -72,7 +75,8 @@ namespace SupportActivate.ProcessSQL
                     pid.Description = reader["Description"].ToString();
                     pid.SubType = reader["SubType"].ToString();
                     pid.LicenseType = reader["LicenseType"].ToString();
-                    pid.MAKCount = reader["MAKCount"].ToString();
+                    var count = -1;
+                    pid.MAKCount = int.TryParse(reader["MAKCount"].ToString(), out count) ? count : -1;
                     pid.ErrorCode = reader["ErrorCode"].ToString();
                     pid.KeyGetWeb = reader["Getweb"].ToString();
                 }
@@ -135,7 +139,7 @@ namespace SupportActivate.ProcessSQL
                             cmd.Parameters.AddWithValue("@Description", pidkey.Description);
                             cmd.Parameters.AddWithValue("@SubType", pidkey.SubType);
                             cmd.Parameters.AddWithValue("@LicenseType", pidkey.LicenseType);
-                            cmd.Parameters.AddWithValue("@MAKCount", string.IsNullOrEmpty(pidkey.MAKCount) ? string.Empty : pidkey.MAKCount);
+                            cmd.Parameters.AddWithValue("@MAKCount", pidkey.MAKCount);
                             cmd.Parameters.AddWithValue("@ErrorCode", string.IsNullOrEmpty(pidkey.ErrorCode) ? string.Empty : pidkey.ErrorCode);
                             cmd.Parameters.AddWithValue("@Getweb", pidkey.KeyGetWeb);
                             cmd.Parameters.AddWithValue("@Note", Note);
@@ -188,8 +192,7 @@ namespace SupportActivate.ProcessSQL
                     update = update + ", SubType='" + pidkey.SubType + "'";
                 if (!string.IsNullOrEmpty(pidkey.LicenseType))
                     update = update + ", LicenseType='" + pidkey.LicenseType + "'";
-                if (!string.IsNullOrEmpty(pidkey.MAKCount))
-                    update = update + ", MAKCount='" + pidkey.MAKCount + "'";
+                update = update + ", MAKCount='" + pidkey.MAKCount + "'";
                 if (!string.IsNullOrEmpty(pidkey.ErrorCode))
                     update = update + ", ErrorCode='" + pidkey.ErrorCode + "'";
                 if (!string.IsNullOrEmpty(pidkey.KeyGetWeb))
@@ -217,5 +220,45 @@ namespace SupportActivate.ProcessSQL
             }
         }
 
+        private void BackupAndRestoreDBOld(string table)
+        {
+            using (SQLiteConnection SqlConn = new SQLiteConnection(connectionStringOld))
+            {
+                string sql = "SELECT * FROM " + table + " WHERE MAKCount <> '" + ContantResource.KeyBlock + "' AND ErrorCode <> '" + ContantResource.KeyRetaiBlock + "'";
+                SQLiteCommand cmd = new SQLiteCommand(sql, SqlConn);
+                SqlConn.Open();
+                SQLiteDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int ActivCount = -1;
+                    int.TryParse(reader["MAKCount"].ToString(), out ActivCount);
+
+                    pid pid = new pid();
+                    pid.Key = reader.GetString(1);
+                    pid.Description = reader.GetString(2);
+                    pid.SubType = reader.GetString(3);
+                    pid.LicenseType = reader.GetString(4);
+                    pid.MAKCount = ActivCount;
+                    pid.ErrorCode = reader.GetString(6);
+                    pid.KeyGetWeb = reader.GetString(7);
+                    CreateDataKey(true, pid, reader.GetString(8));
+                }
+                SqlConn.Close();
+            }
+        }
+
+        public void BackupAndRestoreDBOld()
+        {
+            if (File.Exists(fullOldPath))
+            {
+                BackupAndRestoreDBOld(KeyWindows);
+                BackupAndRestoreDBOld(KeyOffice);
+                BackupAndRestoreDBOld(KeyServer);
+                BackupAndRestoreDBOld(KeyOther);
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                File.Delete(fullOldPath);
+            }
+        }
     }
 }

@@ -19,8 +19,8 @@ namespace SupportActivate.ProcessBusiness
         public string GetConfirmationID(string iid, string tokenGetcid)
         {
             string cid = processGetRemainingActivationsOrCID.GetRemainingActivationsOrCID(1, iid, "55041-03413-188-239517-00-1033-9200.0000-2692020");
-            if (Constant.KeyBlock == cid) return Constant.Exceeded_IID;
-            if (cid.IndexOf("Please") == -1 && cid != Constant.serverBusy && cid != "0x71" && cid != "0xC004C017" && cid != Constant.Need_to_call)
+            if (ContantResource.KeyBlock == cid) return ContantResource.Exceeded_IID;
+            if (cid.IndexOf("Please") == -1 && cid != ContantResource.serverBusy && cid != "0x71" && cid != "0xC004C017" && cid != ContantResource.Need_to_call)
                 return cid;
             return GetcidWithApi(iid, tokenGetcid);
         }
@@ -48,7 +48,7 @@ namespace SupportActivate.ProcessBusiness
             catch (Exception ex)
             {
                 logger.Error(ex);
-                return Constant.serverBusy;
+                return ContantResource.serverBusy;
             }
         }
     }

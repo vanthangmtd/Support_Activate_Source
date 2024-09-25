@@ -26,9 +26,9 @@ namespace SupportActivate.FormWindows
             string token = Regex.Replace(tbx_Token.Text.ToLower(), "[^0-9a-z]+", "");
             string email = tbx_Email.Text;
             if (token.Length < 10)
-                MessageBox.Show("Token has 10 characters, please enter 10 full characters.", Messages.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Token has 10 characters, please enter 10 full characters.", MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else if (email == "")
-                MessageBox.Show("Please enter your email address.", Messages.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter your email address.", MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
                 lb_Timer.Text = "00:00:00:000";
@@ -105,12 +105,12 @@ namespace SupportActivate.FormWindows
                     if (status == "error")
                     {
                         timer1.Stop();
-                        MessageBox.Show(res, Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(res, MessagesResource.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
                         timer1.Stop();
-                        MessageBox.Show(res, Messages.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(res, MessagesResource.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 finally
@@ -123,7 +123,7 @@ namespace SupportActivate.FormWindows
             {
                 timer1.Stop();
                 logger.Error(ex);
-                MessageBox.Show("Error", Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error", MessagesResource.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             timer1.Stop();
             btn_Reg.Invoke(new Action(() =>

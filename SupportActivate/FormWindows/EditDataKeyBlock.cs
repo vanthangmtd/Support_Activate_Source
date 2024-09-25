@@ -69,7 +69,7 @@ namespace SupportActivate.FormWindows
             catch (Exception ex)
             {
                 logger.Error(ex);
-                MessageBox.Show("Memory overflow", Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Memory overflow", MessagesResource.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }// "Memory overflow"
         }
 
@@ -77,7 +77,7 @@ namespace SupportActivate.FormWindows
         {
             key = Clipboard.GetText().ToUpper();
             if (string.IsNullOrEmpty(key))
-                MessageBox.Show("Please copy the key to the clipboard!", Messages.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please copy the key to the clipboard!", MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
                 tbx_KeyInput.Text = key;
         }
@@ -124,12 +124,12 @@ namespace SupportActivate.FormWindows
                     }));
                 }
                 listKeyPIDKey.Clear();
-                MessageBox.Show("Add this key to the blocked ones success", Messages.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Add this key to the blocked ones success", MessagesResource.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 logger.Error(ex);
-                MessageBox.Show("Add this key to the blocked ones error", Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Add this key to the blocked ones error", MessagesResource.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -151,12 +151,12 @@ namespace SupportActivate.FormWindows
                     }));
                 }
                 listKeyPIDKey.Clear();
-                MessageBox.Show("Delete this key from the blocked ones success", Messages.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Delete this key from the blocked ones success", MessagesResource.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 logger.Error(ex);
-                MessageBox.Show("Delete this key from the blocked ones error", Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Delete this key from the blocked ones error", MessagesResource.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

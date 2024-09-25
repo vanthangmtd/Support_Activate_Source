@@ -36,7 +36,7 @@ namespace SupportActivate.FormWindows
                     if (status == "error")
                     {
                         timer1.Stop();
-                        MessageBox.Show((string)results.SelectToken("res"), Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show((string)results.SelectToken("res"), MessagesResource.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
@@ -49,26 +49,26 @@ namespace SupportActivate.FormWindows
                             pid.Description = string.IsNullOrEmpty(Convert.ToString(item["Description"])) ? string.Empty : Convert.ToString(item["Description"]);
                             pid.SubType = string.IsNullOrEmpty(Convert.ToString(item["SubType"])) ? string.Empty : Convert.ToString(item["SubType"]);
                             pid.LicenseType = string.IsNullOrEmpty(Convert.ToString(item["LicenseType"])) ? string.Empty : Convert.ToString(item["LicenseType"]);
-                            pid.MAKCount = string.IsNullOrEmpty(Convert.ToString(item["MAKCount"])) ? string.Empty : Convert.ToString(item["MAKCount"]);
+                            pid.MAKCount = string.IsNullOrEmpty(Convert.ToString(item["MAKCount"])) ? 0 : Convert.ToInt32(item["MAKCount"]);
                             pid.ErrorCode = string.IsNullOrEmpty(Convert.ToString(item["Errorcode"])) ? string.Empty : Convert.ToString(item["Errorcode"]);
                             pid.KeyGetWeb = string.Empty;
                             serverKey.CreateDataKey(true, pid, string.Empty);
                         }
                         timer1.Stop();
-                        MessageBox.Show("Successful data synchronization.", Messages.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Successful data synchronization.", MessagesResource.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
                 {
                     timer1.Stop();
-                    MessageBox.Show("No data returned.", Messages.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("No data returned.", MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
             {
                 timer1.Stop();
                 logger.Error(ex);
-                MessageBox.Show("There is an error synchronizing data.", Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("There is an error synchronizing data.", MessagesResource.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             timer1.Stop();
             btn_Syn.Invoke(new Action(() =>

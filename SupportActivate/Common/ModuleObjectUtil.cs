@@ -9,7 +9,7 @@ namespace SupportActivate.Common
         public string SubType { get; set; }
         public string LicenseType { get; set; }
         public string ErrorCode { get; set; }
-        public string MAKCount { get; set; }
+        public int MAKCount { get; set; }
         public string KeyGetWeb { get; set; }
     }
 
@@ -21,7 +21,7 @@ namespace SupportActivate.Common
         public string st { get; set; }// SubType
         public string lit { get; set; }// License Type
         public string ds { get; set; }// Description
-        public string count { get; set; }// count
+        public int count { get; set; }// count
         public bool validKey { get; set; }
     }
 

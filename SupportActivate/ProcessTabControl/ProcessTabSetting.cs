@@ -24,7 +24,7 @@ namespace SupportActivate.ProcessTabControl
         public void cb_EnablePidKeyAdv_CheckedChanged(object sender, EventArgs e)
         {
             if (formMain.cb_EnablePidKeyAdv.Checked)
-                formMain.tbx_ValidKey.Text = Messages.AdvancedCheckPidkey;
+                formMain.tbx_ValidKey.Text = MessagesResource.AdvancedCheckPidkey;
             else
             {
                 formMain.btn_CheckAdv.Enabled = false;
@@ -36,7 +36,7 @@ namespace SupportActivate.ProcessTabControl
         {
             if (formMain.cb_EnableMultiThread.Checked)
             {
-                var confirm = MessageBox.Show(Messages.MultythreadNoSupportWin7Off10, Messages.warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var confirm = MessageBox.Show(MessagesResource.MultythreadNoSupportWin7Off10, MessagesResource.warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (confirm == DialogResult.Yes)
                     formMain.cbb_MultyThread.Enabled = true;
                 else
@@ -58,15 +58,15 @@ namespace SupportActivate.ProcessTabControl
             try
             {
                 serverSetting.UpdateSetting(formMain.cb_EnablePidKeyAdv.Checked, formMain.cb_LoadInDataKey.Checked, formMain.cb_QuestionClose.Checked);
-                MessageBox.Show(Messages.SaveComplete, Messages.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(MessagesResource.SaveComplete, MessagesResource.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Messages.SaveError, Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(MessagesResource.SaveError, MessagesResource.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 serverSetting.CreateDataBase();
                 serverKey = new ServerKey();
                 serverKey.createDataBase();
-                MessageBox.Show(Messages.OperationAgain, Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(MessagesResource.OperationAgain, MessagesResource.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 logger.Error(ex);
             }
         }
@@ -111,7 +111,7 @@ namespace SupportActivate.ProcessTabControl
                         formMain.lb_NotiUpdate.ForeColor = System.Drawing.Color.Red;
                         formMain.lb_NotiUpdate.Text = "Please update to a newer version of Support Activate!";
                     }));
-                    var ud = MessageBox.Show(Messages.PleaseUpdateNewerVersion, Messages.warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    var ud = MessageBox.Show(MessagesResource.PleaseUpdateNewerVersion, MessagesResource.warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (ud == DialogResult.Yes)
                     {
                         ServicePointManager.Expect100Continue = true;
@@ -194,7 +194,7 @@ namespace SupportActivate.ProcessTabControl
                             formMain.lb_NotiUpdate.ForeColor = System.Drawing.SystemColors.ControlText;
                             formMain.lb_NotiUpdate.Text = "";
                         }));
-                        MessageBox.Show("Download update success", Messages.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Download update success", MessagesResource.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
@@ -209,7 +209,7 @@ namespace SupportActivate.ProcessTabControl
             catch (Exception ex)
             {
                 logger.Error(ex);
-                MessageBox.Show("Download update error", Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Download update error", MessagesResource.error, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

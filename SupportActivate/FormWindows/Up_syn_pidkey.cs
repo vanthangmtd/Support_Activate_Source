@@ -39,13 +39,15 @@ namespace SupportActivate.FormWindows
                 SQLiteDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
+                    int ActivCount = -1;
+                    int.TryParse(reader["MAKCount"].ToString(), out ActivCount);
                     Pidkey_Up_syn_pidkey keyoffice = new Pidkey_Up_syn_pidkey()
                     {
                         Key = reader.GetString(1),
                         Description = reader.GetString(2),
                         SubType = reader.GetString(3),
                         LicenseType = reader.GetString(4),
-                        MAKCount = reader.GetString(5),
+                        MAKCount = ActivCount.ToString(),
                         Errorcode = reader.GetString(6)
                     };
                     list_key.Add(keyoffice);
@@ -118,19 +120,19 @@ namespace SupportActivate.FormWindows
                         });
                     }
                     processUpKeyToServer(data1);
-                    MessageBox.Show("Successfully added " + totalCount + " keys.", Messages.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Successfully added " + totalCount + " keys.", MessagesResource.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (soDu == 0)
                 {
                     timer1.Stop();
-                    MessageBox.Show("Successfully added " + totalCount + " keys.", Messages.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Successfully added " + totalCount + " keys.", MessagesResource.success, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
                 timer1.Stop();
                 logger.Error(ex);
-                MessageBox.Show("Synchronized error1.", Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Synchronized error1.", MessagesResource.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             timer1.Stop();
             btn_Syn.Invoke(new Action(() =>
@@ -150,7 +152,7 @@ namespace SupportActivate.FormWindows
             if (string.IsNullOrEmpty(results))
             {
                 timer1.Stop();
-                MessageBox.Show("Synchronized error.", Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Synchronized error.", MessagesResource.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             else
@@ -161,7 +163,7 @@ namespace SupportActivate.FormWindows
                 if (status == "error")
                 {
                     timer1.Stop();
-                    MessageBox.Show(res, Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(res, MessagesResource.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
                 else
