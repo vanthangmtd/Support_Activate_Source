@@ -57,8 +57,8 @@ namespace SupportActivate.Common
             listOption.Add("Windows 7 - Server 2008 R2 - Embedded 7", @"\windows7-server2008r2-thinpc-embsta-winPosReady7");//1
             listOption.Add("Windows 8 - Server 2012 - Embedded 8", @"\windows8-server2012-winemb8");//2
             listOption.Add("Windows 8.1 - Server 2012 R2", @"\windows8.1-server2012r2");//3
-            listOption.Add("Windows 10 - Server 2016/2019", @"\windows10-server2016-2019");//4
-            listOption.Add("Windows 11 - Server 2021", @"\windows11-server2021");//5
+            listOption.Add("Windows 10 - Server 2016/2019/2021", @"\windows10-server2016-2019-2021");//4
+            listOption.Add("Windows 11", @"\windows11");//5
             listOption.Add("Office 2010", @"\office2010");//6
             listOption.Add("Office 2013", @"\office2013");//7
             listOption.Add("Office 2016", @"\office2016");//8
@@ -212,8 +212,7 @@ namespace SupportActivate.Common
                         @"cls" + "\r\n" +
                         @"if exist ""%ProgramFiles%\Microsoft Office\Office16\ospp.vbs"" cd /d ""%ProgramFiles%\Microsoft Office\Office16""" + "\r\n" +
                         @"if exist ""%ProgramFiles(x86)%\Microsoft Office\Office16\ospp.vbs"" cd /d ""%ProgramFiles(x86)%\Microsoft Office\Office16""" + "\r\n" +
-                        @"for /f %i in ('dir /b ..\root\Licenses16\ProPlus2019VL_MAK_AE*.xrm-ms') do cscript ospp.vbs /inslic:""..\root\Licenses16\%i""" + "\r\n" +
-                        @"for /f %i in ('dir /b ..\root\Licenses16\ProPlus2019VL_KMS_Client_AE*.xrm-ms') do cscript ospp.vbs /inslic:""..\root\Licenses16\%i""" + "\r\n" +
+                        @"for /f %i in ('dir /b ..\root\Licenses16\ProPlus2019VL*.xrm-ms') do cscript ospp.vbs /inslic:""..\root\Licenses16\%i""" + "\r\n" +
                         @"@echo on&mode con: cols=20 lines=2" + "\r\n" +
                         @"cscript OSPP.VBS /inpkey:%k1%" + "\r\n" +
                         @"@mode con: cols=100 lines=30" + "\r\n" +
@@ -222,8 +221,7 @@ namespace SupportActivate.Common
                     @"cls" + "\r\n" +
                     @"if exist ""%ProgramFiles%\Microsoft Office\Office16\ospp.vbs"" cd /d ""%ProgramFiles%\Microsoft Office\Office16""" + "\r\n" +
                     @"if exist ""%ProgramFiles(x86)%\Microsoft Office\Office16\ospp.vbs"" cd /d ""%ProgramFiles(x86)%\Microsoft Office\Office16""" + "\r\n" +
-                    @"for /f %i in ('dir /b ..\root\Licenses16\ProPlus2021VL_MAK_AE*.xrm-ms') do cscript ospp.vbs /inslic:""..\root\Licenses16\%i""" + "\r\n" +
-                    @"for /f %i in ('dir /b ..\root\Licenses16\ProPlus2021VL_KMS_Client_AE*.xrm-ms') do cscript ospp.vbs /inslic:""..\root\Licenses16\%i""" + "\r\n" +
+                    @"for /f %i in ('dir /b ..\root\Licenses16\ProPlus2021VL*.xrm-ms') do cscript ospp.vbs /inslic:""..\root\Licenses16\%i""" + "\r\n" +
                     @"@echo on&mode con: cols=20 lines=2" + "\r\n" +
                     @"cscript OSPP.VBS /inpkey:%k1%" + "\r\n" +
                     @"@mode con: cols=100 lines=30" + "\r\n" +
