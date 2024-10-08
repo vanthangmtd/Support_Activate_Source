@@ -21,8 +21,11 @@ namespace SupportActivate.ProcessTabControl
         FormSupportActivate formMain = FormSupportActivate.formMain;
         DataKey formDataKey = DataKey.formDataKey;
         ProcessDataKeyCommon processDataKeyCommon;
+        SourceData sourceData;
         int countKey;
         int keyCurrent;
+        static Dictionary<string, string> optionCbxPidKey;
+        static Dictionary<string, string> listOptionCbxPidKey;
 
         private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(ProcessDataKey));
 
@@ -30,6 +33,43 @@ namespace SupportActivate.ProcessTabControl
         {
             processDataKeyCommon = new ProcessDataKeyCommon();
             serverKey = new ServerKey();
+            sourceData = new SourceData();
+            optionCbxPidKey = sourceData.OptionCbxPidKeyAndTxtFilesArrayPidKey();
+            listOptionCbxPidKey = new Dictionary<string, string>();
+            listOptionCbxPidKey.Add("All Edition Windows/Office", optionCbxPidKey.ElementAt(0).Key);
+            listOptionCbxPidKey.Add("Windows 7", optionCbxPidKey.ElementAt(1).Key);
+            listOptionCbxPidKey.Add("Embedded Industry 7", optionCbxPidKey.ElementAt(1).Key);
+
+            listOptionCbxPidKey.Add("Win 8", optionCbxPidKey.ElementAt(2).Key);
+            listOptionCbxPidKey.Add("Server 2012", optionCbxPidKey.ElementAt(2).Key);
+            listOptionCbxPidKey.Add("Server Essentials 2012", optionCbxPidKey.ElementAt(2).Key);
+
+            listOptionCbxPidKey.Add("Win 8.1", optionCbxPidKey.ElementAt(3).Key);
+            listOptionCbxPidKey.Add("Server 12 R2", optionCbxPidKey.ElementAt(3).Key);
+            listOptionCbxPidKey.Add("Server Essentials 2012 R2", optionCbxPidKey.ElementAt(3).Key);
+            listOptionCbxPidKey.Add("Embedded Industry 8.1", optionCbxPidKey.ElementAt(3).Key);
+
+            listOptionCbxPidKey.Add("Win 10", optionCbxPidKey.ElementAt(4).Key);
+            listOptionCbxPidKey.Add("Win 2021", optionCbxPidKey.ElementAt(4).Key);
+            listOptionCbxPidKey.Add("Server 2016", optionCbxPidKey.ElementAt(4).Key);
+            listOptionCbxPidKey.Add("Server Essentials 2016", optionCbxPidKey.ElementAt(4).Key);
+            listOptionCbxPidKey.Add("Server 2019", optionCbxPidKey.ElementAt(4).Key);
+            listOptionCbxPidKey.Add("Server Essentials 2019", optionCbxPidKey.ElementAt(4).Key);
+            listOptionCbxPidKey.Add("Server 2021", optionCbxPidKey.ElementAt(4).Key);
+
+            listOptionCbxPidKey.Add("Win 11", optionCbxPidKey.ElementAt(5).Key);
+            listOptionCbxPidKey.Add("Win 2024", optionCbxPidKey.ElementAt(5).Key);
+            listOptionCbxPidKey.Add("Server 2025", optionCbxPidKey.ElementAt(5).Key);
+
+            listOptionCbxPidKey.Add("Office14", optionCbxPidKey.ElementAt(6).Key);
+            listOptionCbxPidKey.Add("Office15", optionCbxPidKey.ElementAt(7).Key);
+            listOptionCbxPidKey.Add("Office16", optionCbxPidKey.ElementAt(8).Key);
+            listOptionCbxPidKey.Add("Office19", optionCbxPidKey.ElementAt(9).Key);
+            listOptionCbxPidKey.Add("Office21", optionCbxPidKey.ElementAt(10).Key);
+            listOptionCbxPidKey.Add("Office24", optionCbxPidKey.ElementAt(11).Key);
+            listOptionCbxPidKey.Add("Visual", optionCbxPidKey.ElementAt(12).Key);
+            listOptionCbxPidKey.Add("Vista", optionCbxPidKey.ElementAt(13).Key);
+            listOptionCbxPidKey.Add("Server 2008", optionCbxPidKey.ElementAt(13).Key);
         }
 
         private List<dataKey> getDataFromDataGridView()
@@ -647,125 +687,24 @@ namespace SupportActivate.ProcessTabControl
             Thread checkKey = new Thread(checkKeyWin8_Office2019);
             Thread checkKeyWin7Office2010 = new Thread(checkKeyPIDKeyWin7Office2010);
             formDataKey.optionKey = formDataKey.BoxDescription;
-            if (formDataKey.optionKey.Contains("Office14"))
+            string optionKey = formDataKey.optionKey;
+
+            var result = listOptionCbxPidKey.Where(x => optionKey.Contains(x.Key)).Select(x => x.Value).FirstOrDefault();
+            if (string.IsNullOrEmpty(result))
             {
-                formDataKey.optionCbx = "Office 2010";
-                checkKeyWin7Office2010.Start();
+                result = optionCbxPidKey.ElementAt(0).Key;
             }
-            else if (formDataKey.optionKey.Contains("Office15"))
+            if (result == optionCbxPidKey.ElementAt(1).Key || result == optionCbxPidKey.ElementAt(6).Key ||
+                result == optionCbxPidKey.ElementAt(12).Key || result == optionCbxPidKey.ElementAt(13).Key ||
+                result == optionCbxPidKey.ElementAt(14).Key || result == optionCbxPidKey.ElementAt(0).Key)
             {
-                formDataKey.optionCbx = "Office 2013";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Office16"))
-            {
-                formDataKey.optionCbx = "Office 2016";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Office19"))
-            {
-                formDataKey.optionCbx = "Office 2019";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Office21"))
-            {
-                formDataKey.optionCbx = "Office 2021";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Office24"))
-            {
-                formDataKey.optionCbx = "Office 2024";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Windows 7"))
-            {
-                formDataKey.optionCbx = "Windows 7 - Server 2008 R2 - Embedded 7";
-                checkKeyWin7Office2010.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Win 8.1"))
-            {
-                formDataKey.optionCbx = "Windows 8.1 - Server 2012 R2";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Win 8"))
-            {
-                formDataKey.optionCbx = "Windows 8 - Server 2012 - Embedded 8";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Win 10"))
-            {
-                formDataKey.optionCbx = "Windows 10 - Server 2016/2019";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Win 2021"))
-            {
-                formDataKey.optionCbx = "Windows 10 - Server 2016/2019";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Win 11"))
-            {
-                formDataKey.optionCbx = "Windows 11 - Server 2021";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Server 12 R2"))
-            {
-                formDataKey.optionCbx = "Windows 8.1 - Server 2012 R2";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Server Essentials 2012 R2"))
-            {
-                formDataKey.optionCbx = "Windows 8.1 - Server 2012 R2";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Server 2012"))
-            {
-                formDataKey.optionCbx = "Windows 8 - Server 2012 - Embedded 8";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Server Essentials 2012"))
-            {
-                formDataKey.optionCbx = "Windows 8 - Server 2012 - Embedded 8";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Server 2016"))
-            {
-                formDataKey.optionCbx = "Windows 10 - Server 2016/2019";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Server Essentials 2016"))
-            {
-                formDataKey.optionCbx = "Windows 10 - Server 2016/2019";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Server 2019"))
-            {
-                formDataKey.optionCbx = "Windows 10 - Server 2016/2019";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Server Essentials 2019"))
-            {
-                formDataKey.optionCbx = "Windows 10 - Server 2016/2019";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Server 2021"))
-            {
-                formDataKey.optionCbx = "Windows 11 - Server 2021";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Embedded Industry 8.1"))
-            {
-                formDataKey.optionCbx = "Windows 8 - Server 2012 - Embedded 8";
-                checkKey.Start();
-            }
-            else if (formDataKey.optionKey.Contains("Embedded Industry 7"))
-            {
-                formDataKey.optionCbx = "Windows 7 - Server 2008 R2 - Embedded 7";
+                formDataKey.optionCbx = result;
                 checkKeyWin7Office2010.Start();
             }
             else
             {
-                formDataKey.optionCbx = "All Edition Windows/Office";
-                checkKeyWin7Office2010.Start();
+                formDataKey.optionCbx = result;
+                checkKey.Start();
             }
             formDataKey.timer1.Start();
         }

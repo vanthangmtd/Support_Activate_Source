@@ -58,17 +58,16 @@ namespace SupportActivate.Common
             listOption.Add("Windows 8 - Server 2012 - Embedded 8", @"\windows8-server2012-winemb8");//2
             listOption.Add("Windows 8.1 - Server 2012 R2", @"\windows8.1-server2012r2");//3
             listOption.Add("Windows 10 - Server 2016/2019/2021", @"\windows10-server2016-2019-2021");//4
-            listOption.Add("Windows 11", @"\windows11");//5
+            listOption.Add("Windows 11 - Server 2025", @"\windows11-server2025");//5
             listOption.Add("Office 2010", @"\office2010");//6
             listOption.Add("Office 2013", @"\office2013");//7
             listOption.Add("Office 2016", @"\office2016");//8
             listOption.Add("Office 2019", @"\office2019");//9
             listOption.Add("Office 2021", @"\office2021");//10
             listOption.Add("Office 2024", @"\office2024");//11
-            listOption.Add("Windows Vista - Server 2008", @"\windowsvista-server2008");//12
-            listOption.Add("SQL", @"\sql");//13
-            listOption.Add("Visual Studio", @"\vs");//14
-            listOption.Add("Other", @"\other");//15
+            listOption.Add("Visual Studio", @"\vs");//12
+            listOption.Add("Windows Vista - Server 2008", @"\windowsvista-server2008");//13
+            listOption.Add("Other", @"\other");//14
             return listOption;
         }
 

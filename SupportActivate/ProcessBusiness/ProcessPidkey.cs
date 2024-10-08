@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 using System.ServiceProcess;
 using System.Text;
 using System.Windows.Forms;
-using System.Xml;
+using System.Xml.Linq;
 
 namespace SupportActivate.ProcessBusiness
 {
@@ -525,7 +525,7 @@ namespace SupportActivate.ProcessBusiness
             catch (Exception ex)
             {
                 ds = ContantResource.error;
-                Console.WriteLine(ex.ToString());
+                logger.Error(ex);
             }
             inforPidkey inforPidkey = new inforPidkey();
             inforPidkey.epid = epid;
@@ -543,33 +543,70 @@ namespace SupportActivate.ProcessBusiness
         {
             try
             {
-                XmlDocument doc = new XmlDocument();
+                string namespaceName = "http://www.microsoft.com/DRM/XrML2/TM/v2";
+                var xml = XDocument.Load(pkey);
+                var infoBin = xml.Root.Descendants(XName.Get("infoBin", namespaceName)).Select(x => x.Value).SingleOrDefault();
+                xml = XDocument.Parse(Encoding.UTF8.GetString(Convert.FromBase64String(infoBin)));
+
+                namespaceName = "http://www.microsoft.com/DRM/PKEY/Configuration/2.0";
+                var config = xml.Root.Descendants(XName.Get("Configuration", namespaceName)).Select(x => x).ToList();
+                foreach (var item in config)
+                {
+                    var ActConfigId = item.Descendants(XName.Get("ActConfigId", namespaceName)).Select(x => x.Value).SingleOrDefault();
+                    string ProductDescription = string.Empty;
+                    if (ActConfigId.ToUpper() == aid.Replace("{", "").Replace("}", "").ToUpper())
+                        return item.Descendants(XName.Get("ProductDescription", namespaceName)).Select(x => x.Value).SingleOrDefault();
+                    else if (ActConfigId.ToUpper() == aid.ToUpper())
+                        return item.Descendants(XName.Get("ProductDescription", namespaceName)).Select(x => x.Value).SingleOrDefault();
+                }
+                return "Not Found";
+
+                /*var nameSpaces = xml.Root.Attributes().Where(a => a.IsNamespaceDeclaration).ToList().Select(x => x.Name.LocalName).SingleOrDefault();
+                if (nameSpaces != "xmlns")
+                {
+                    xml.Root.Add(new XAttribute("xmlns", "http://www.microsoft.com/DRM/PKEY/Configuration/2.0"));
+                    xml.Root.Attributes(XNamespace.Xmlns + nameSpaces).Remove();
+                }
+                xml = XDocument.Parse(xml.Root.FirstNode.ToString());
+                dynamic json = JsonConvert.DeserializeObject(JsonConvert.SerializeXNode(xml));
+                JArray jArray = json.Configurations.Configuration;
+                foreach (var item in jArray.Children())
+                {
+                    var itemProperties = item.Children<JProperty>();
+                    //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                    var myElement = itemProperties.FirstOrDefault(x => x.Name == "ActConfigId").Value;
+                    if (myElement.ToString().ToUpper() == aid.Replace("{", "").Replace("}", "").ToUpper())
+                    {
+                        return itemProperties.FirstOrDefault(x => x.Name == "ProductDescription").Value.ToString();
+                    }
+                    else if (myElement.ToString().ToUpper() == aid.ToUpper())
+                    {
+                        return itemProperties.FirstOrDefault(x => x.Name == "ProductDescription").Value.ToString();
+                    }
+                }
+                return "Not Found";*/
+
+                /*XmlDocument doc = new XmlDocument();
                 doc.Load(pkey);
                 using (MemoryStream stream = new MemoryStream(Convert.FromBase64String(doc.GetElementsByTagName("tm:infoBin")[0].InnerText)))
                 {
                     doc.Load(stream);
                     XmlNamespaceManager ns = new XmlNamespaceManager(doc.NameTable);
                     ns.AddNamespace("pkc", "http://www.microsoft.com/DRM/PKEY/Configuration/2.0");
+                    var jsonText = JsonConvert.SerializeXmlNode(doc);
                     XmlNode node = doc.SelectSingleNode("/pkc:ProductKeyConfiguration/pkc:Configurations/pkc:Configuration[pkc:ActConfigId='" + aid + "']", ns);
-                    bool flag = node == null;
-
-                    if (flag)
+                    if (node == null)
                         node = doc.SelectSingleNode("/pkc:ProductKeyConfiguration/pkc:Configurations/pkc:Configuration[pkc:ActConfigId='" + aid.ToUpper() + "']", ns);
-
-                    bool flag2 = node != null && node.HasChildNodes;
-
-                    if (flag2)
+                    if (node != null && node.HasChildNodes)
                     {
-                        bool flag3 = node.ChildNodes[2].InnerText.Contains(edi);
-
-                        if (flag3)
+                        if (node.ChildNodes[2].InnerText.Contains(edi))
                             return node.ChildNodes[3].InnerText;
                         else
                             return "Not Found";
                     }
                     else
                         return "Not Found";
-                }
+                }*/
             }
             catch
             {

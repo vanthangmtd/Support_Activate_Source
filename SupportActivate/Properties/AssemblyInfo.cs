@@ -10,8 +10,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("getcid.info")]
 [assembly: AssemblyProduct("Support Activate v.3.6.3 x64")]
-[assembly: AssemblyCopyright("Copyright ©  2024")]
+[assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "config/Log4Net.Config.xml", Watch = true)]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -20,7 +21,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("54c514f9-6809-47b7-8a24-48d5618f1f7b")]
+[assembly: Guid("25e37344-1de9-44f7-ae55-37aed5b6a46f")]
 
 // Version information for an assembly consists of the following four values:
 //

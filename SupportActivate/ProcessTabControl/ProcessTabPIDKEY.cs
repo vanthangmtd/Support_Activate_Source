@@ -613,10 +613,8 @@ namespace SupportActivate.ProcessTabControl
                         if (optionVersionPidKey == listOption.ElementAt(0).Key ||
                            optionVersionPidKey == listOption.ElementAt(1).Key ||
                            optionVersionPidKey == listOption.ElementAt(6).Key ||
-                           optionVersionPidKey == listOption.ElementAt(12).Key ||
                            optionVersionPidKey == listOption.ElementAt(13).Key ||
-                           optionVersionPidKey == listOption.ElementAt(14).Key ||
-                           optionVersionPidKey == listOption.ElementAt(15).Key)
+                           optionVersionPidKey == listOption.ElementAt(14).Key)
                             CheckKeyPIDKeyWin7Office2010(optionVersionPidKey);
                         else
                             CheckKeyPIDKey(optionVersionPidKey);
@@ -694,10 +692,8 @@ namespace SupportActivate.ProcessTabControl
                             if (optionVersionPidKey == listOption.ElementAt(0).Key ||
                                optionVersionPidKey == listOption.ElementAt(1).Key ||
                                optionVersionPidKey == listOption.ElementAt(6).Key ||
-                               optionVersionPidKey == listOption.ElementAt(12).Key ||
                                optionVersionPidKey == listOption.ElementAt(13).Key ||
-                               optionVersionPidKey == listOption.ElementAt(14).Key ||
-                               optionVersionPidKey == listOption.ElementAt(15).Key)
+                               optionVersionPidKey == listOption.ElementAt(14).Key)
                                 CheckKeyAdv_PIDKeyWin7Office2010(optionVersionPidKey);
                             else
                                 CheckKeyPIDKeyAdv(optionVersionPidKey);
