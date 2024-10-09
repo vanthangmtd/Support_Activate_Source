@@ -100,8 +100,12 @@ namespace SupportActivate.Setting
                 "Final version " + formMain.version;
             formMain.tbx_InfoApp.Text = infoApp;
 
-            formMain.panel_TokenActivate.Hide();
-            formMain.tbx_TokenActivate.Enabled = false;
+            //formMain.panel_TokenActivate.Hide();
+            formMain.lb_TitleToken.Hide();
+            formMain.tbx_TokenActivate.Hide();
+            formMain.tbx_TokenActivate.Clear();
+            formMain.cbb_VersionVL.Hide();
+            formMain.cbb_VersionVL.Items.Clear();
             formMain.cb_SaveKey.Checked = true;
             formMain.lb_NotiUpdate.Text = "";
 

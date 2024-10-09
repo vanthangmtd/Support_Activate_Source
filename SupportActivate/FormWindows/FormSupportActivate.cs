@@ -148,10 +148,16 @@ namespace FormWindows.SupportActivate
             => processTabSupportActivate.cb_Decode_CheckedChanged(sender, e);
 
         private void cbb_VersionActivate_Click(object sender, EventArgs e)
-        => processTabSupportActivate.cbb_VersionActivate_Click(sender, e);
+            => processTabSupportActivate.cbb_VersionActivate(sender, e, string.Empty);
 
         private void cbb_VersionActivate_SelectedIndexChanged(object sender, EventArgs e)
-            => processTabSupportActivate.cbb_VersionActivate_SelectedIndexChanged(sender, e);
+            => processTabSupportActivate.cbb_VersionActivate(sender, e, "cbb_VersionActivate_SelectedIndexChanged");
+
+        private void cbb_VersionVL_Click(object sender, EventArgs e)
+            => processTabSupportActivate.cbb_VersionVL(sender, e);
+
+        private void cbb_VersionVL_SelectedIndexChanged(object sender, EventArgs e)
+            => processTabSupportActivate.cbb_VersionVL(sender, e);
 
         private void btn_OKActivate_Click(object sender, EventArgs e)
             => processTabSupportActivate.btn_OKActivate_Click(sender, e);
@@ -203,10 +209,10 @@ namespace FormWindows.SupportActivate
         }
 
         private void cbb_VersionGetcid_Click(object sender, EventArgs e)
-            => processTabSupportActivate.cbb_VersionGetcid_Click(sender, e);
+            => processTabSupportActivate.cbb_VersionGetcid(sender, e, "cbb_VersionGetcid_Click");
 
         private void cbb_VersionGetcid_SelectedIndexChanged(object sender, EventArgs e)
-            => processTabSupportActivate.cbb_VersionGetcid_SelectedIndexChanged(sender, e);
+            => processTabSupportActivate.cbb_VersionGetcid(sender, e, string.Empty);
 
         private void btn_OKGetcid_Click(object sender, EventArgs e)
             => processTabSupportActivate.btn_OKGetcid_Click(sender, e);
@@ -317,6 +323,8 @@ namespace FormWindows.SupportActivate
 
         private void btn_CheckUpdate_Click(object sender, EventArgs e)
         => processTabSetting.btn_CheckUpdate_Click(sender, e);
+
+
 
         //processTabSetting End
 

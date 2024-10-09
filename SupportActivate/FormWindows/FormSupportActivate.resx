@@ -708,8 +708,29 @@
   <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="tbx_TokenActivate.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="cbb_VersionVL.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="cbb_VersionVL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 3</value>
+  </data>
+  <data name="cbb_VersionVL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 23</value>
+  </data>
+  <data name="cbb_VersionVL.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;cbb_VersionVL.Name" xml:space="preserve">
+    <value>cbb_VersionVL</value>
+  </data>
+  <data name="&gt;&gt;cbb_VersionVL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbb_VersionVL.Parent" xml:space="preserve">
+    <value>panel_TokenActivate</value>
+  </data>
+  <data name="&gt;&gt;cbb_VersionVL.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="tbx_TokenActivate.Location" type="System.Drawing.Point, System.Drawing">
     <value>44, 3</value>
@@ -730,7 +751,7 @@
     <value>panel_TokenActivate</value>
   </data>
   <data name="&gt;&gt;tbx_TokenActivate.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="lb_TitleToken.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -757,7 +778,7 @@
     <value>panel_TokenActivate</value>
   </data>
   <data name="&gt;&gt;lb_TitleToken.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="panel_TokenActivate.Location" type="System.Drawing.Point, System.Drawing">
     <value>397, 45</value>

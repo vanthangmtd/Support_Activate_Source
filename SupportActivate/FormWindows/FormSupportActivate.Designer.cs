@@ -143,6 +143,7 @@ namespace FormWindows.SupportActivate
             this.timerGetcid = new System.Windows.Forms.Timer(this.components);
             this.timerPidKey = new System.Windows.Forms.Timer(this.components);
             this.lb_NotiUpdate = new System.Windows.Forms.Label();
+            this.cbb_VersionVL = new System.Windows.Forms.ComboBox();
             this.tabAction.SuspendLayout();
             this.tabSupportActivate.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -357,6 +358,7 @@ namespace FormWindows.SupportActivate
             // 
             // panel_TokenActivate
             // 
+            this.panel_TokenActivate.Controls.Add(this.cbb_VersionVL);
             this.panel_TokenActivate.Controls.Add(this.tbx_TokenActivate);
             this.panel_TokenActivate.Controls.Add(this.lb_TitleToken);
             resources.ApplyResources(this.panel_TokenActivate, "panel_TokenActivate");
@@ -945,6 +947,15 @@ namespace FormWindows.SupportActivate
             this.lb_NotiUpdate.ForeColor = System.Drawing.Color.Red;
             this.lb_NotiUpdate.Name = "lb_NotiUpdate";
             // 
+            // cbb_VersionVL
+            // 
+            resources.ApplyResources(this.cbb_VersionVL, "cbb_VersionVL");
+            this.cbb_VersionVL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbb_VersionVL.FormattingEnabled = true;
+            this.cbb_VersionVL.Name = "cbb_VersionVL";
+            this.cbb_VersionVL.SelectedIndexChanged += new System.EventHandler(this.cbb_VersionVL_SelectedIndexChanged);
+            this.cbb_VersionVL.Click += new System.EventHandler(this.cbb_VersionVL_Click);
+            // 
             // FormSupportActivate
             // 
             resources.ApplyResources(this, "$this");
@@ -1120,6 +1131,7 @@ namespace FormWindows.SupportActivate
         public System.Windows.Forms.TextBox tbx_InfoApp;
         public System.Windows.Forms.ProgressBar probDownload;
         public System.Windows.Forms.Label lb_NotiUpdate;
+        public System.Windows.Forms.ComboBox cbb_VersionVL;
     }
 }
 

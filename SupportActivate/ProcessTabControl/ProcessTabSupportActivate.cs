@@ -76,46 +76,58 @@ namespace SupportActivate.ProcessTabControl
             }
         }
 
-        public void cbb_VersionActivate_Click(object sender, EventArgs e)
+        public void cbb_VersionActivate(object sender, EventArgs e, string function_name)
         {
             StringBuilder keyInput = new StringBuilder();
             key = keyInput.Append(formMain.tbx_Key.Text.Trim().ToUpper()).ToString();
             optionCbx = formMain.cbb_VersionActivate.Text;
+            formMain.lb_TitleToken.Hide();
+            formMain.tbx_TokenActivate.Hide();
+            formMain.tbx_TokenActivate.Clear();
+            formMain.cbb_VersionVL.Hide();
+            formMain.cbb_VersionVL.Items.Clear();
             if (optionCbx == setting.optionSelect)
             {
-                formMain.panel_TokenActivate.Visible = false;
-                formMain.tbx_TokenActivate.Enabled = false;
-                formMain.tbx_TokenActivate.Clear();
                 formMain.tbx_Log.Clear();
                 formMain.btn_OKActivate.Enabled = false;
             }
             else if (optionCbx != setting.optionSelect)
             {
                 cb_Decode_CheckedChanged(sender, e);
-                if (sourceData.OptionCbxWindowsOffice()[4] == optionCbx || sourceData.OptionCbxWindowsOffice()[7] == optionCbx)
+                var listSourceData = sourceData.OptionCbxWindowsOffice();
+                if (listSourceData[4] == optionCbx || listSourceData[7] == optionCbx)
                 {
                     Clipboard.Clear();
-                    formMain.panel_TokenActivate.Visible = true;
-                    formMain.tbx_TokenActivate.Enabled = true;
+                    formMain.lb_TitleToken.Show();
+                    formMain.tbx_TokenActivate.Show();
                     formMain.tbx_TokenActivate.Clear();
                     formMain.tbx_TokenActivate.Text = Regex.Replace(serverSetting.GetKEYAPI().ToLower(), "[^a-z0-9]", "");
                     formMain.tbx_Log.Clear();
+                    if (function_name == "cbb_VersionActivate_SelectedIndexChanged")
+                        formMain.btn_OKActivate.Enabled = true;
+                }
+                else if (listSourceData[11] == optionCbx || listSourceData[12] == optionCbx || listSourceData[13] == optionCbx)
+                {
+                    formMain.tbx_Log.Clear();
+                    formMain.btn_OKActivate.Enabled = false;
+                    formMain.cbb_VersionVL.Show();
+                    string year = Regex.Replace(optionCbx, @"\D", "");
+                    var listOfficeVL = sourceData.OptionOfficeVL(year);
+                    foreach (var item in listOfficeVL)
+                    {
+                        formMain.cbb_VersionVL.Items.Add(item);
+                    }
                 }
                 else
                 {
-                    formMain.panel_TokenActivate.Hide();
-                    formMain.tbx_TokenActivate.Enabled = false;
-                    formMain.tbx_TokenActivate.Clear();
                     formMain.btn_OKActivate.Enabled = true;
-                    var listSourceData = sourceData.OptionCbxWindowsOffice();
                     for (int i = 0; i < listSourceData.Count; i++)
                     {
-                        string value = listSourceData[i];
-                        if (value == optionCbx)
+                        if (listSourceData[i] == optionCbx)
                         {
                             StringBuilder data = new StringBuilder();
                             string tokenGetcid = Regex.Replace(formMain.tbx_TokenActivate.Text.ToLower(), "[^a-z0-9]", "");
-                            data.Append(sourceData.ScriptWindowsOffice(i, key, tokenGetcid));
+                            data.Append(sourceData.ScriptWindowsOffice(i, key, tokenGetcid, string.Empty));
                             formMain.tbx_Log.Text = data.ToString();
                             Clipboard.SetText(data.ToString());
                         }
@@ -124,51 +136,28 @@ namespace SupportActivate.ProcessTabControl
             }
         }
 
-        public void cbb_VersionActivate_SelectedIndexChanged(object sender, EventArgs e)
+        public void cbb_VersionVL(object sender, EventArgs e)
         {
             StringBuilder keyInput = new StringBuilder();
             key = keyInput.Append(formMain.tbx_Key.Text.Trim().ToUpper()).ToString();
             optionCbx = formMain.cbb_VersionActivate.Text;
+            string typeOfficeVL = formMain.cbb_VersionVL.Text;
+            var listSourceData = sourceData.OptionCbxWindowsOffice();
             if (optionCbx == setting.optionSelect)
             {
-                formMain.panel_TokenActivate.Visible = false;
-                formMain.tbx_TokenActivate.Enabled = false;
-                formMain.tbx_TokenActivate.Clear();
                 formMain.tbx_Log.Clear();
                 formMain.btn_OKActivate.Enabled = false;
             }
-            else if (optionCbx != setting.optionSelect)
+            else if (optionCbx != setting.optionSelect && (listSourceData[11] == optionCbx || listSourceData[12] == optionCbx || listSourceData[13] == optionCbx))
             {
                 cb_Decode_CheckedChanged(sender, e);
-                if (sourceData.OptionCbxWindowsOffice()[4] == optionCbx || sourceData.OptionCbxWindowsOffice()[7] == optionCbx)
+                if (!string.IsNullOrEmpty(typeOfficeVL))
                 {
-                    Clipboard.Clear();
-                    formMain.panel_TokenActivate.Visible = true;
-                    formMain.tbx_TokenActivate.Enabled = true;
-                    formMain.tbx_TokenActivate.Clear();
-                    formMain.tbx_TokenActivate.Text = Regex.Replace(serverSetting.GetKEYAPI().ToLower(), "[^a-z0-9]", "");
-                    formMain.tbx_Log.Clear();
                     formMain.btn_OKActivate.Enabled = true;
-                }
-                else
-                {
-                    formMain.panel_TokenActivate.Hide();
-                    formMain.tbx_TokenActivate.Enabled = false;
-                    formMain.tbx_TokenActivate.Clear();
-                    formMain.btn_OKActivate.Enabled = true;
-                    var listSourceData = sourceData.OptionCbxWindowsOffice();
-                    for (int i = 0; i < listSourceData.Count; i++)
-                    {
-                        string value = listSourceData[i];
-                        if (value == optionCbx)
-                        {
-                            StringBuilder data = new StringBuilder();
-                            string tokenGetcid = Regex.Replace(formMain.tbx_TokenActivate.Text.ToLower(), "[^a-z0-9]", "");
-                            data.Append(sourceData.ScriptWindowsOffice(i, key, tokenGetcid));
-                            formMain.tbx_Log.Text = data.ToString();
-                            Clipboard.SetText(data.ToString());
-                        }
-                    }
+                    StringBuilder data = new StringBuilder();
+                    data.Append(sourceData.ScriptWindowsOffice(11, key, string.Empty, typeOfficeVL));
+                    formMain.tbx_Log.Text = data.ToString();
+                    Clipboard.SetText(data.ToString());
                 }
             }
         }
@@ -178,8 +167,10 @@ namespace SupportActivate.ProcessTabControl
             StringBuilder keyInput = new StringBuilder();
             key = keyInput.Append(formMain.tbx_Key.Text.Trim().ToUpper()).ToString();
             optionCbx = formMain.cbb_VersionActivate.Text;
+
             cb_Decode_CheckedChanged(sender, e);
-            if (sourceData.OptionCbxWindowsOffice()[4] == optionCbx || sourceData.OptionCbxWindowsOffice()[7] == optionCbx)
+            var listSourceData = sourceData.OptionCbxWindowsOffice();
+            if (listSourceData[4] == optionCbx || listSourceData[7] == optionCbx)
             {
                 string tokenGetcid = Regex.Replace(formMain.tbx_TokenActivate.Text.ToLower(), "[^a-z0-9]", "");
                 if (string.IsNullOrEmpty(tokenGetcid))
@@ -187,14 +178,12 @@ namespace SupportActivate.ProcessTabControl
                 else
                 {
                     formMain.btn_OKActivate.Enabled = true;
-                    var listSourceData = sourceData.OptionCbxWindowsOffice();
                     for (int i = 0; i < listSourceData.Count; i++)
                     {
-                        string value = listSourceData[i];
-                        if (value == optionCbx)
+                        if (listSourceData[i] == optionCbx)
                         {
                             StringBuilder data = new StringBuilder();
-                            data.Append(sourceData.ScriptWindowsOffice(i, key, tokenGetcid));
+                            data.Append(sourceData.ScriptWindowsOffice(i, key, tokenGetcid, string.Empty));
                             formMain.tbx_Log.Text = data.ToString();
                             Clipboard.SetText(data.ToString());
                         }
@@ -208,17 +197,19 @@ namespace SupportActivate.ProcessTabControl
                     }
                 }
             }
+            else if (optionCbx != setting.optionSelect && (listSourceData[11] == optionCbx || listSourceData[12] == optionCbx || listSourceData[13] == optionCbx))
+            {
+                cbb_VersionVL(sender, e);
+            }
             else
             {
-                var listSourceData = sourceData.OptionCbxWindowsOffice();
                 for (int i = 0; i < listSourceData.Count; i++)
                 {
-                    string value = listSourceData[i];
-                    if (value == optionCbx)
+                    if (listSourceData[i] == optionCbx)
                     {
                         StringBuilder data = new StringBuilder();
                         string tokenGetcid = Regex.Replace(formMain.tbx_TokenActivate.Text.ToLower(), "[^a-z0-9]", "");
-                        data.Append(sourceData.ScriptWindowsOffice(i, key, tokenGetcid));
+                        data.Append(sourceData.ScriptWindowsOffice(i, key, tokenGetcid, string.Empty));
                         formMain.tbx_Log.Text = data.ToString();
                         Clipboard.SetText(data.ToString());
                     }
@@ -332,7 +323,7 @@ namespace SupportActivate.ProcessTabControl
             }
         }
 
-        public void cbb_VersionGetcid_Click(object sender, EventArgs e)
+        public void cbb_VersionGetcid(object sender, EventArgs e, string function_name)
         {
             formMain.tbx_Log.PasswordChar = '\u0000';
             string optionCbx = formMain.cbb_VersionGetcid.Text;
@@ -341,41 +332,8 @@ namespace SupportActivate.ProcessTabControl
             {
                 formMain.btn_OKGetcid.Enabled = false;
                 formMain.cbb_VersionGetcid.SelectedIndex = 0;
-                MessageBox.Show(MessagesResource.NoCID, MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if (!validate.ValidateCID(cid))
-            {
-                formMain.btn_OKGetcid.Enabled = false;
-                formMain.cbb_VersionGetcid.SelectedIndex = 0;
-                MessageBox.Show(MessagesResource.CIDWrong, MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if (optionCbx == setting.optionSelect)
-                formMain.btn_OKGetcid.Enabled = false;
-            else
-            {
-                formMain.btn_OKGetcid.Enabled = true;
-                var optionCbxCID = sourceData.OptionCbxCID();
-                for (int i = 0; i < optionCbxCID.Count; i++)
-                {
-                    if (optionCbxCID[i] == optionCbx)
-                    {
-                        string data = sourceData.ScriptCID(i, cid);
-                        formMain.tbx_Log.Text = data;
-                        Clipboard.SetText(data);
-                    }
-                }
-            }
-        }
-
-        public void cbb_VersionGetcid_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            formMain.tbx_Log.PasswordChar = '\u0000';
-            string optionCbx = formMain.cbb_VersionGetcid.Text;
-            string cid = formMain.tbx_CID.Text.Replace(" ", "").Replace("-", "").Trim();
-            if (string.IsNullOrEmpty(cid))
-            {
-                formMain.btn_OKGetcid.Enabled = false;
-                formMain.cbb_VersionGetcid.SelectedIndex = 0;
+                if (function_name == "cbb_VersionGetcid_Click")
+                    MessageBox.Show(MessagesResource.NoCID, MessagesResource.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (!validate.ValidateCID(cid))
             {
@@ -423,13 +381,13 @@ namespace SupportActivate.ProcessTabControl
         {
             formMain.tbx_Log.PasswordChar = '\u0000';
             string optionCbx = formMain.cbb_VersionCheckRemoveLincense.Text;
-            if(optionCbx == "Check/Remove")
+            if (optionCbx == "Check/Remove")
                 formMain.btn_OKCheckRemoveLincense.Enabled = false;
             else
             {
                 formMain.btn_OKCheckRemoveLincense.Enabled = true;
                 var optionCbxCheckRemove = sourceData.OptionCbxCheckRemove();
-                for(int i = 0;i< optionCbxCheckRemove.Count; i++)
+                for (int i = 0; i < optionCbxCheckRemove.Count; i++)
                 {
                     if (optionCbxCheckRemove[i] == optionCbx)
                     {

@@ -7,20 +7,34 @@ namespace SupportActivate.Common
         public List<string> OptionCbxWindowsOffice()
         {
             List<string> listOption = new List<string>();
-            listOption.Add("Windows/Office");
-            listOption.Add("Activate Windows Online");
-            listOption.Add("Activate Windows Byphone");
-            listOption.Add("Activate Windows Byphone For Win7/8/8.1");
+            listOption.Add("Windows/Office");//0
+            listOption.Add("Activate Windows Online");//1
+            listOption.Add("Activate Windows Byphone");//2
+            listOption.Add("Activate Windows Byphone For Win7/8/8.1");//3
             listOption.Add("Activate Windows Byphone All"); //4
-            listOption.Add("Update Windows 10 Home To Windows 10 Pro");
-            listOption.Add("Activate Office Online");
+            listOption.Add("Update Windows 10 Home To Windows 10 Pro");//5
+            listOption.Add("Activate Office Online");//6
             listOption.Add("Activate Office Byphone All"); //7
-            listOption.Add("Activate Office 2010 Byphone");
-            listOption.Add("Activate Office 2013 Byphone");
-            listOption.Add("Activate Office 2016/2019/2021/2024 Byphone");
-            listOption.Add("Activate Office 2019 Volume");
-            listOption.Add("Activate Office 2021 Volume");
-            listOption.Add("Activate Office 2024 Volume");
+            listOption.Add("Activate Office 2010 Byphone");//8
+            listOption.Add("Activate Office 2013 Byphone");//9
+            listOption.Add("Activate Office 2016/2019/2021/2024 Byphone");//10
+            listOption.Add("Activate Office 2019 Volume");//11
+            listOption.Add("Activate Office 2021 Volume");//12
+            listOption.Add("Activate Office 2024 Volume");//13
+            return listOption;
+        }
+
+        public List<string> OptionOfficeVL(string year)
+        {
+            List<string> listOption = new List<string>();
+            listOption.Add("ProPlus" + year);//0
+            listOption.Add("Standard" + year);//1
+            listOption.Add("ProjectPro" + year);//2
+            listOption.Add("ProjectStd" + year);//3
+            listOption.Add("VisioPro" + year);//4
+            listOption.Add("VisioStd" + year);//5
+            listOption.Add("Outlook" + year);//6
+            listOption.Add("Access" + year);//7
             return listOption;
         }
 
@@ -71,7 +85,7 @@ namespace SupportActivate.Common
             return listOption;
         }
 
-        public string ScriptWindowsOffice(int luaChon, string key, string tokenApi)
+        public string ScriptWindowsOffice(int luaChon, string key, string tokenApi, string typeOfficeVL)
         {
             Dictionary<int, string> script = new Dictionary<int, string>();
             script.Add(1, @"cd %windir%\system32" + "\r\n" +
@@ -211,29 +225,10 @@ namespace SupportActivate.Common
                         @"cls" + "\r\n" +
                         @"if exist ""%ProgramFiles%\Microsoft Office\Office16\ospp.vbs"" cd /d ""%ProgramFiles%\Microsoft Office\Office16""" + "\r\n" +
                         @"if exist ""%ProgramFiles(x86)%\Microsoft Office\Office16\ospp.vbs"" cd /d ""%ProgramFiles(x86)%\Microsoft Office\Office16""" + "\r\n" +
-                        @"for /f %i in ('dir /b ..\root\Licenses16\ProPlus2019VL*.xrm-ms') do cscript ospp.vbs /inslic:""..\root\Licenses16\%i""" + "\r\n" +
-                        @"@echo on&mode con: cols=20 lines=2" + "\r\n" +
-                        @"cscript OSPP.VBS /inpkey:%k1%" + "\r\n" +
-                        @"@mode con: cols=100 lines=30" + "\r\n" +
+                        @"for /f ""tokens=3"" %b in ('cscript ospp.vbs /inpkey:%k1% ^| findstr /b /c:""ERROR CODE""') do set err=%b" + "\r\n" +
+                        @"if ""%err%"" == ""0xC004F069"" for /f %i in ('dir /b ..\root\Licenses16\" + typeOfficeVL + "VL*.xrm-ms') do cscript ospp.vbs /inslic:\"..\\root\\Licenses16\\%i\"" + "\r\n" +
+                        @"if ""%err%"" == ""0xC004F069"" cscript ospp.vbs /inpkey:%k1%" + "\r\n" +
                         @"cscript ospp.vbs /act" + "\r\n");
-            script.Add(12, @"set k1=" + key + "" + "\r\n" +
-                    @"cls" + "\r\n" +
-                    @"if exist ""%ProgramFiles%\Microsoft Office\Office16\ospp.vbs"" cd /d ""%ProgramFiles%\Microsoft Office\Office16""" + "\r\n" +
-                    @"if exist ""%ProgramFiles(x86)%\Microsoft Office\Office16\ospp.vbs"" cd /d ""%ProgramFiles(x86)%\Microsoft Office\Office16""" + "\r\n" +
-                    @"for /f %i in ('dir /b ..\root\Licenses16\ProPlus2021VL*.xrm-ms') do cscript ospp.vbs /inslic:""..\root\Licenses16\%i""" + "\r\n" +
-                    @"@echo on&mode con: cols=20 lines=2" + "\r\n" +
-                    @"cscript OSPP.VBS /inpkey:%k1%" + "\r\n" +
-                    @"@mode con: cols=100 lines=30" + "\r\n" +
-                    @"cscript ospp.vbs /act" + "\r\n");
-            script.Add(13, @"set k1=" + key + "" + "\r\n" +
-                    @"cls" + "\r\n" +
-                    @"if exist ""%ProgramFiles%\Microsoft Office\Office16\ospp.vbs"" cd /d ""%ProgramFiles%\Microsoft Office\Office16""" + "\r\n" +
-                    @"if exist ""%ProgramFiles(x86)%\Microsoft Office\Office16\ospp.vbs"" cd /d ""%ProgramFiles(x86)%\Microsoft Office\Office16""" + "\r\n" +
-                    @"for /f %i in ('dir /b ..\root\Licenses16\ProPlus2024VL*.xrm-ms') do cscript ospp.vbs /inslic:""..\root\Licenses16\%i""" + "\r\n" +
-                    @"@echo on&mode con: cols=20 lines=2" + "\r\n" +
-                    @"cscript OSPP.VBS /inpkey:%k1%" + "\r\n" +
-                    @"@mode con: cols=100 lines=30" + "\r\n" +
-                    @"cscript ospp.vbs /act" + "\r\n");
             switch (luaChon)
             {
                 case 1:
@@ -258,10 +253,6 @@ namespace SupportActivate.Common
                     return script[10];
                 case 11:
                     return script[11];
-                case 12:
-                    return script[12];
-                case 13:
-                    return script[13];
                 default:
                     return string.Empty;
             }

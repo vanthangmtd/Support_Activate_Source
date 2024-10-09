@@ -1,18 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\SupportActivate\\",
+  "WorkspaceRootPath": "D:\\Source_code\\SupportActivate\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{25E37344-1DE9-44F7-AE55-37AED5B6A46F}|SupportActivate\\SupportActivate.csproj|d:\\supportactivate\\supportactivate\\formwindows\\formsupportactivate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{25E37344-1DE9-44F7-AE55-37AED5B6A46F}|SupportActivate\\SupportActivate.csproj|d:\\source_code\\supportactivate\\supportactivate\\formwindows\\formsupportactivate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{25E37344-1DE9-44F7-AE55-37AED5B6A46F}|SupportActivate\\SupportActivate.csproj|solutionrelative:supportactivate\\formwindows\\formsupportactivate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{25E37344-1DE9-44F7-AE55-37AED5B6A46F}|SupportActivate\\SupportActivate.csproj|d:\\supportactivate\\supportactivate\\processbusiness\\processpidkey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25E37344-1DE9-44F7-AE55-37AED5B6A46F}|SupportActivate\\SupportActivate.csproj|solutionrelative:supportactivate\\processbusiness\\processpidkey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{25E37344-1DE9-44F7-AE55-37AED5B6A46F}|SupportActivate\\SupportActivate.csproj|D:\\Source_code\\SupportActivate\\supportactivate\\formwindows\\formsupportactivate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25E37344-1DE9-44F7-AE55-37AED5B6A46F}|SupportActivate\\SupportActivate.csproj|solutionrelative:supportactivate\\formwindows\\formsupportactivate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{25E37344-1DE9-44F7-AE55-37AED5B6A46F}|SupportActivate\\SupportActivate.csproj|d:\\supportactivate\\supportactivate\\formwindows\\formsupportactivate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25E37344-1DE9-44F7-AE55-37AED5B6A46F}|SupportActivate\\SupportActivate.csproj|solutionrelative:supportactivate\\formwindows\\formsupportactivate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{25E37344-1DE9-44F7-AE55-37AED5B6A46F}|SupportActivate\\SupportActivate.csproj|d:\\source_code\\supportactivate\\supportactivate\\processtabcontrol\\processtabsupportactivate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25E37344-1DE9-44F7-AE55-37AED5B6A46F}|SupportActivate\\SupportActivate.csproj|solutionrelative:supportactivate\\processtabcontrol\\processtabsupportactivate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25E37344-1DE9-44F7-AE55-37AED5B6A46F}|SupportActivate\\SupportActivate.csproj|d:\\source_code\\supportactivate\\supportactivate\\setting\\configsetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25E37344-1DE9-44F7-AE55-37AED5B6A46F}|SupportActivate\\SupportActivate.csproj|solutionrelative:supportactivate\\setting\\configsetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25E37344-1DE9-44F7-AE55-37AED5B6A46F}|SupportActivate\\SupportActivate.csproj|d:\\source_code\\supportactivate\\supportactivate\\common\\sourcedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25E37344-1DE9-44F7-AE55-37AED5B6A46F}|SupportActivate\\SupportActivate.csproj|solutionrelative:supportactivate\\common\\sourcedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,46 +29,72 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 259,
+          "DockedWidth": 228,
           "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProcessPidkey.cs",
-              "DocumentMoniker": "D:\\SupportActivate\\SupportActivate\\ProcessBusiness\\ProcessPidkey.cs",
-              "RelativeDocumentMoniker": "SupportActivate\\ProcessBusiness\\ProcessPidkey.cs",
-              "ToolTip": "D:\\SupportActivate\\SupportActivate\\ProcessBusiness\\ProcessPidkey.cs",
-              "RelativeToolTip": "SupportActivate\\ProcessBusiness\\ProcessPidkey.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAApAAAA",
+              "DocumentIndex": 4,
+              "Title": "SourceData.cs",
+              "DocumentMoniker": "D:\\Source_code\\SupportActivate\\SupportActivate\\Common\\SourceData.cs",
+              "RelativeDocumentMoniker": "SupportActivate\\Common\\SourceData.cs",
+              "ToolTip": "D:\\Source_code\\SupportActivate\\SupportActivate\\Common\\SourceData.cs",
+              "RelativeToolTip": "SupportActivate\\Common\\SourceData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-08T11:01:49.349Z",
+              "WhenOpened": "2024-10-09T01:29:10.907Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FormSupportActivate.cs",
-              "DocumentMoniker": "D:\\SupportActivate\\SupportActivate\\FormWindows\\FormSupportActivate.cs",
-              "RelativeDocumentMoniker": "SupportActivate\\FormWindows\\FormSupportActivate.cs",
-              "ToolTip": "D:\\SupportActivate\\SupportActivate\\FormWindows\\FormSupportActivate.cs",
-              "RelativeToolTip": "SupportActivate\\FormWindows\\FormSupportActivate.cs",
-              "ViewState": "AQIAABoBAAAAAAAAAAA8wC8AAABFAAAA",
+              "DocumentIndex": 3,
+              "Title": "ConfigSetting.cs",
+              "DocumentMoniker": "D:\\Source_code\\SupportActivate\\SupportActivate\\Setting\\ConfigSetting.cs",
+              "RelativeDocumentMoniker": "SupportActivate\\Setting\\ConfigSetting.cs",
+              "ToolTip": "D:\\Source_code\\SupportActivate\\SupportActivate\\Setting\\ConfigSetting.cs",
+              "RelativeToolTip": "SupportActivate\\Setting\\ConfigSetting.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABQAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-08T10:49:31.911Z",
+              "WhenOpened": "2024-10-09T02:22:11.897Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "FormSupportActivate.cs [Design]",
-              "DocumentMoniker": "D:\\SupportActivate\\SupportActivate\\FormWindows\\FormSupportActivate.cs",
+              "DocumentMoniker": "D:\\Source_code\\SupportActivate\\SupportActivate\\FormWindows\\FormSupportActivate.cs",
               "RelativeDocumentMoniker": "SupportActivate\\FormWindows\\FormSupportActivate.cs",
-              "ToolTip": "D:\\SupportActivate\\SupportActivate\\FormWindows\\FormSupportActivate.cs [Design]",
+              "ToolTip": "D:\\Source_code\\SupportActivate\\SupportActivate\\FormWindows\\FormSupportActivate.cs [Design]",
               "RelativeToolTip": "SupportActivate\\FormWindows\\FormSupportActivate.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-08T10:19:39.638Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FormSupportActivate.cs",
+              "DocumentMoniker": "D:\\Source_code\\SupportActivate\\SupportActivate\\FormWindows\\FormSupportActivate.cs",
+              "RelativeDocumentMoniker": "SupportActivate\\FormWindows\\FormSupportActivate.cs",
+              "ToolTip": "D:\\Source_code\\SupportActivate\\SupportActivate\\FormWindows\\FormSupportActivate.cs",
+              "RelativeToolTip": "SupportActivate\\FormWindows\\FormSupportActivate.cs",
+              "ViewState": "AQIAALUAAAAAAAAAAAAvwNYAAABSAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T10:49:31.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProcessTabSupportActivate.cs",
+              "DocumentMoniker": "D:\\Source_code\\SupportActivate\\SupportActivate\\ProcessTabControl\\ProcessTabSupportActivate.cs",
+              "RelativeDocumentMoniker": "SupportActivate\\ProcessTabControl\\ProcessTabSupportActivate.cs",
+              "ToolTip": "D:\\Source_code\\SupportActivate\\SupportActivate\\ProcessTabControl\\ProcessTabSupportActivate.cs",
+              "RelativeToolTip": "SupportActivate\\ProcessTabControl\\ProcessTabSupportActivate.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAANkAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T01:22:21.057Z",
+              "EditorCaption": ""
             }
           ]
         }
