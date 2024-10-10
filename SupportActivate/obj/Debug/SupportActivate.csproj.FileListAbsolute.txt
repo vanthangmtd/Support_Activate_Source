@@ -29,34 +29,3 @@ D:\SupportActivate\SupportActivate\obj\Debug\SupportActivate.csproj.CoreCompileI
 D:\SupportActivate\SupportActivate\obj\Debug\SupportA.1CDD58B5.Up2Date
 D:\SupportActivate\SupportActivate\obj\Debug\Support Activate v.3.6.3 x64.exe
 D:\SupportActivate\SupportActivate\obj\Debug\Support Activate v.3.6.3 x64.pdb
-D:\Source_code\SupportActivate\SupportActivate\bin\Debug\Support Activate v.3.6.3 x64.exe.config
-D:\Source_code\SupportActivate\SupportActivate\bin\Debug\Support Activate v.3.6.3 x64.exe
-D:\Source_code\SupportActivate\SupportActivate\bin\Debug\Support Activate v.3.6.3 x64.pdb
-D:\Source_code\SupportActivate\SupportActivate\bin\Debug\EntityFramework.dll
-D:\Source_code\SupportActivate\SupportActivate\bin\Debug\EntityFramework.SqlServer.dll
-D:\Source_code\SupportActivate\SupportActivate\bin\Debug\log4net.dll
-D:\Source_code\SupportActivate\SupportActivate\bin\Debug\Newtonsoft.Json.dll
-D:\Source_code\SupportActivate\SupportActivate\bin\Debug\System.Data.SQLite.dll
-D:\Source_code\SupportActivate\SupportActivate\bin\Debug\System.Data.SQLite.EF6.dll
-D:\Source_code\SupportActivate\SupportActivate\bin\Debug\System.Data.SQLite.Linq.dll
-D:\Source_code\SupportActivate\SupportActivate\bin\Debug\EntityFramework.xml
-D:\Source_code\SupportActivate\SupportActivate\bin\Debug\EntityFramework.SqlServer.xml
-D:\Source_code\SupportActivate\SupportActivate\bin\Debug\log4net.xml
-D:\Source_code\SupportActivate\SupportActivate\bin\Debug\Newtonsoft.Json.xml
-D:\Source_code\SupportActivate\SupportActivate\bin\Debug\System.Data.SQLite.xml
-D:\Source_code\SupportActivate\SupportActivate\obj\Debug\SupportActivate.csproj.AssemblyReference.cache
-D:\Source_code\SupportActivate\SupportActivate\obj\Debug\SupportActivate.Common.ContantResource.resources
-D:\Source_code\SupportActivate\SupportActivate\obj\Debug\SupportActivate.Common.MessagesResource.resources
-D:\Source_code\SupportActivate\SupportActivate\obj\Debug\SupportActivate.FormWindows.AddKey.resources
-D:\Source_code\SupportActivate\SupportActivate\obj\Debug\SupportActivate.FormWindows.DataKey.resources
-D:\Source_code\SupportActivate\SupportActivate\obj\Debug\SupportActivate.FormWindows.Down_syn_pidkey.resources
-D:\Source_code\SupportActivate\SupportActivate\obj\Debug\SupportActivate.FormWindows.EditDataKeyBlock.resources
-D:\Source_code\SupportActivate\SupportActivate\obj\Debug\FormWindows.SupportActivate.FormSupportActivate.resources
-D:\Source_code\SupportActivate\SupportActivate\obj\Debug\SupportActivate.FormWindows.Register_token.resources
-D:\Source_code\SupportActivate\SupportActivate\obj\Debug\SupportActivate.FormWindows.Up_syn_pidkey.resources
-D:\Source_code\SupportActivate\SupportActivate\obj\Debug\SupportActivate.Properties.Resources.resources
-D:\Source_code\SupportActivate\SupportActivate\obj\Debug\SupportActivate.csproj.GenerateResource.cache
-D:\Source_code\SupportActivate\SupportActivate\obj\Debug\SupportActivate.csproj.CoreCompileInputs.cache
-D:\Source_code\SupportActivate\SupportActivate\obj\Debug\SupportA.1CDD58B5.Up2Date
-D:\Source_code\SupportActivate\SupportActivate\obj\Debug\Support Activate v.3.6.3 x64.exe
-D:\Source_code\SupportActivate\SupportActivate\obj\Debug\Support Activate v.3.6.3 x64.pdb

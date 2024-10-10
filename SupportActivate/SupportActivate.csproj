@@ -8,7 +8,7 @@
     <ProjectGuid>{25E37344-1DE9-44F7-AE55-37AED5B6A46F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>SupportActivate</RootNamespace>
-    <AssemblyName>Support Activate v.3.6.3 x64</AssemblyName>
+    <AssemblyName>Support Activate v.3.6.4 x64</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
