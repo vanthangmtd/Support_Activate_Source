@@ -234,14 +234,14 @@ namespace SupportActivate.ProcessSQL
                     int.TryParse(reader["MAKCount"].ToString(), out ActivCount);
 
                     pid pid = new pid();
-                    pid.Key = reader.GetString(1);
-                    pid.Description = reader.GetString(2);
-                    pid.SubType = reader.GetString(3);
-                    pid.LicenseType = reader.GetString(4);
+                    pid.Key = reader.IsDBNull(1) ? string.Empty : reader.GetString(1);
+                    pid.Description = reader.IsDBNull(2) ? string.Empty : reader.GetString(2);
+                    pid.SubType = reader.IsDBNull(3) ? string.Empty : reader.GetString(3);
+                    pid.LicenseType = reader.IsDBNull(4) ? string.Empty : reader.GetString(4);
                     pid.MAKCount = ActivCount;
-                    pid.ErrorCode = reader.GetString(6);
-                    pid.KeyGetWeb = reader.GetString(7);
-                    CreateDataKey(true, pid, reader.GetString(8));
+                    pid.ErrorCode = reader.IsDBNull(6) ? string.Empty : reader.GetString(6);
+                    pid.KeyGetWeb = reader.IsDBNull(7) ? string.Empty : reader.GetString(7);
+                    CreateDataKey(true, pid, reader.IsDBNull(8) ? string.Empty : reader.GetString(8));
                 }
                 SqlConn.Close();
             }
